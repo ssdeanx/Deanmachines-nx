@@ -1,31 +1,38 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-/**
- * This function is used to resolve the absolute path of a package.
- */
-function getAbsolutePath(value: string): string {
-  return join(dirname(require.resolve(join(value, 'package.json'))), '/');
-}
+// Get the directory name of the current module
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+
   addons: [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@chromatic-com/storybook'
   ],
+
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {
       builder: {
         viteConfigPath: join(__dirname, '../vite.config.ts'),
       },
     },
   },
+
   docs: {
-    autodocs: 'tag',
+    // For Storybook 8, autodocs is now a default feature
+    defaultName: 'Documentation',
   },
+
   staticDirs: ['../public'],
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
+  }
 };
 
 export default config;
