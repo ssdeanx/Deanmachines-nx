@@ -8,6 +8,15 @@
     },
     {
       "path": "./dashboard"
+    },
+    {
+      "path": "./utils"
+    },
+    {
+      "path": "./data-models"
+    },
+    {
+      "path": "./libs/shared"
     }
   ]
 }

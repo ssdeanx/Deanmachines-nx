@@ -1,7 +1,11 @@
 packages:
-  - packages/*
-  - dashboard
+  - 'packages/*'
+  - 'dashboard'
+  - 'utils'
+  - 'data-models'
+  - 'libs/*'
 onlyBuiltDependencies:
   - '@swc/core'
-  - esbuild
-  - nx
+  - 'core-js'
+  - 'esbuild'
+  - 'nx'

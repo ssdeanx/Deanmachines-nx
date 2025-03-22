@@ -69,7 +69,7 @@
   ],
   "targetDefaults": {
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build", "^build", "^build", "^build", "^build"]
     },
     "e2e-ci--**/*": {
       "dependsOn": ["^build"]
@@ -88,8 +88,14 @@
       },
       "library": {
         "style": "css",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "vitest"
       }
+    }
+  },
+  "release": {
+    "version": {
+      "preVersionCommand": "pnpm dlx nx run-many -t build"
     }
   }
 }
