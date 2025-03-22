@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 // Get the directory name of the current module
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const config: StorybookConfig = {
+const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 
   addons: [
@@ -33,6 +33,6 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript'
   }
-};
+} satisfies StorybookConfig;
 
 export default config;
