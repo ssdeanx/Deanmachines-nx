@@ -4,6 +4,7 @@ packages:
   - 'utils'
   - 'data-models'
   - 'libs/*'
+  - 'libs/shared/*'
 onlyBuiltDependencies:
   - '@swc/core'
   - 'core-js'

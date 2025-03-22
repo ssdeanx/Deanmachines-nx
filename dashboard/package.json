@@ -1,5 +1,10 @@
 {
   "name": "@deanmachines-nx/dashboard",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "scripts": {
+    "storybook": "storybook dev --config-dir .storybook",
+    "build-storybook": "storybook build --config-dir .storybook",
+    "storybook:automigrate": "pnpx storybook automigrate --config-dir .storybook"
+  }
 }

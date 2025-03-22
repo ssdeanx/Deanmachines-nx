@@ -7,9 +7,6 @@
       "path": "./dashboard-e2e"
     },
     {
-      "path": "./dashboard"
-    },
-    {
       "path": "./utils"
     },
     {
@@ -17,6 +14,23 @@
     },
     {
       "path": "./libs/shared"
+    },
+    {
+      "path": "./libs/shared/ui"
+    },
+    {
+      "path": "./libs/shared/api"
+    },
+    {
+      "path": "./dashboard-e2e"
+    },
+    {
+      "path": "./dashboard"
     }
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }
