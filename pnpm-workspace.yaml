@@ -1,2 +1,7 @@
-packages: 
-  - "packages/*"
+packages:
+  - packages/*
+  - dashboard
+onlyBuiltDependencies:
+  - '@swc/core'
+  - esbuild
+  - nx
