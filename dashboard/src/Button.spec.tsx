@@ -1,48 +1,41 @@
 import { render, screen } from '@testing-library/react';
 import { Button } from './Button';
 import { describe, it, expect, vi } from 'vitest';
-import '@testing-library/jest-dom';
 import React from 'react';
 
+const mockClasses = {
+  button: 'button-mock',
+  primary: 'primary-mock',
+  secondary: 'secondary-mock',
+  small: 'small-mock',
+  medium: 'medium-mock',
+  large: 'large-mock'
+};
 
-// Mock the CSS modules to avoid className issues in tests
 vi.mock('./Button.module.css', () => ({
-  default: {
-    button: 'button',
-    primary: 'primary',
-    secondary: 'secondary',
-    small: 'small',
-    medium: 'medium',
-    large: 'large',
-  }
+  default: mockClasses
 }));
 
 describe('Button', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<Button label="Click me" />);
-    expect(baseElement).toBeTruthy();
+  it('renders button element', () => {
+    render(<Button label="Test" />);
+    const button = screen.getByRole('button');
+    expect(button).toBeDefined();
   });
 
-  it('should display the correct label', () => {
-    render(<Button label="Test Button" />);
-    const buttonElement = screen.getByRole('button');
-    // Use the direct string comparison which works without type issues
-    expect(buttonElement.textContent).toBe('Test Button');
-    // Type-safe alternative to toHaveTextContent
-    expect(buttonElement.innerHTML).toContain('Test Button');
+  it('displays correct label', () => {
+    render(<Button label="Click me" />);
+    const button = screen.getByRole('button');
+    expect(button.textContent).toBe('Click me');
   });
 
-  it('should apply primary styles when primary prop is true', () => {
-    const { container } = render(<Button label="Primary Button" primary />);
-    const button = container.firstChild as HTMLElement;
-    // Look for the class name directly without depending on CSS modules implementation
-    expect(button.className).toContain('button');
+  it('applies primary class when primary prop is true', () => {
+    const { container } = render(<Button label="Primary" primary />);
+    expect(container.firstElementChild?.className).toContain('primary');
   });
 
-  it('should apply the correct size class based on size prop', () => {
-    const { container } = render(<Button label="Large Button" size="large" />);
-    const button = container.firstChild as HTMLElement;
-    // Size classes can be checked without depending on actual CSS module naming
-    expect(button).toBeTruthy();
+  it('applies size class correctly', () => {
+    const { container } = render(<Button label="Large" size="large" />);
+    expect(container.firstElementChild?.className).toContain('large');
   });
 });

@@ -6,6 +6,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'small' | 'medium' | 'large';
   label: string;
   backgroundColor?: string;
+  onClick?: () => void;
+  icon?: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  fullWidth?: boolean;
 }
 
 export function Button({
@@ -13,16 +17,26 @@ export function Button({
   size = 'medium',
   backgroundColor,
   label,
+  icon,
+  variant = 'primary',
+  fullWidth = false,
+  onClick,
   ...props
 }: ButtonProps) {
-  const mode = primary ? styles['primary'] : styles['secondary'];
   return (
     <button
       type="button"
-      className={`${styles['button']} ${styles[size]} ${mode}`}
-      style={{ backgroundColor }}
+      className={`
+        ${styles.button} 
+        ${styles[size]} 
+        ${styles[variant]}
+        ${fullWidth ? styles.fullWidth : ''}
+      `}
+      style={backgroundColor ? { backgroundColor } : undefined}
+      onClick={onClick}
       {...props}
     >
+      {icon && <span className={styles.icon}>{icon}</span>}
       {label}
     </button>
   );

@@ -35,5 +35,19 @@
             "readOnly": false,
             "connectionTimeout": 30
         }
+    ],
+    "nxConsole.commonNxCommands": [
+        "run",
+        "run-many",
+        "affected",
+        "affected --graph",
+        "list",
+        "migrate",
+        "reset",
+        "sync"
+    ],
+    "oneDarkPro.bold": true,
+    "cSpell.words": [
+        "esbuild"
     ]
 }

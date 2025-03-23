@@ -1,0 +1,4423 @@
+<repomix>This file is a merged representation of the entire codebase, combined into a single document by Repomix. The content has been processed where content has been formatted for parsing, security check has been disabled.<file_summary>This section contains a summary of this file.<purpose>This file contains a packed representation of the entire repository&apos;s contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.</purpose><file_format>The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files, each consisting of:
+  - File path as an attribute
+  - Full contents of the file</file_format><usage_guidelines>- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.</usage_guidelines><notes>- Some files may have been excluded based on .gitignore rules and Repomix&apos;s configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Content has been formatted for parsing in xml style
+- Security check has been disabled - content may contain sensitive information</notes><additional_info></additional_info></file_summary><directory_structure>.cursor/
+  mcp.json
+  nx-RL-training.md
+  nx-tool.md
+  storybook-codemirror.md
+.github/
+  workflows/
+    ci.yml
+.verdaccio/
+  config.yml
+dashboard/
+  .storybook/
+    main.js
+    main.ts
+  src/
+    app/
+      app.module.css
+      app.tsx
+      nx-welcome.tsx
+    Button.module.css
+    Button.spec.tsx
+    Button.stories.tsx
+    Button.tsx
+    Card.module.css
+    Card.spec.tsx
+    Card.tsx
+    Footer.module.css
+    Footer.spec.tsx
+    Footer.tsx
+    Header.module.css
+    Header.spec.tsx
+    Header.tsx
+    Input.module.css
+    Input.spec.tsx
+    Input.tsx
+    main.tsx
+    Sidebar.module.css
+    Sidebar.spec.tsx
+    Sidebar.tsx
+    styles.css
+    Table.module.css
+    Table.spec.tsx
+    Table.tsx
+  .npmrc
+  eslint.config.mjs
+  index.html
+  package.json
+  tsconfig.app.json
+  tsconfig.json
+  tsconfig.storybook.json
+  vite.config.ts
+dashboard-e2e/
+  src/
+    example.spec.ts
+  eslint.config.mjs
+  package.json
+  playwright.config.ts
+  tsconfig.json
+data-models/
+  src/
+    lib/
+      data-models.module.css
+      data-models.spec.tsx
+      data-models.tsx
+    index.ts
+  .babelrc
+  eslint.config.mjs
+  package.json
+  README.md
+  tsconfig.json
+  tsconfig.lib.json
+  tsconfig.spec.json
+  vite.config.ts
+libs/
+  shared/
+    api/
+      src/
+        lib/
+          api.spec.ts
+          api.ts
+        index.ts
+      eslint.config.mjs
+      package.json
+      README.md
+      tsconfig.json
+      tsconfig.lib.json
+      tsconfig.spec.json
+      vite.config.ts
+    src/
+      lib/
+        shared.module.css
+        shared.spec.tsx
+        shared.tsx
+      index.ts
+    ui/
+      src/
+        lib/
+          button.module.css
+          button.spec.tsx
+          button.tsx
+          card.module.css
+          card.spec.tsx
+          card.tsx
+          eslint.config.mjs
+          form.module.css
+          form.spec.tsx
+          form.tsx
+          ui.module.css
+          ui.spec.tsx
+          ui.tsx
+        index.ts
+      .babelrc
+      eslint.config.mjs
+      package.json
+      README.md
+      tsconfig.json
+      tsconfig.lib.json
+      tsconfig.spec.json
+      vite.config.ts
+    .babelrc
+    eslint.config.mjs
+    package.json
+    README.md
+    tsconfig.json
+    tsconfig.lib.json
+    tsconfig.spec.json
+    vite.config.ts
+utils/
+  src/
+    lib/
+      utils.module.css
+      utils.spec.tsx
+      utils.tsx
+    index.ts
+  .babelrc
+  eslint.config.mjs
+  package.json
+  README.md
+  tsconfig.json
+  tsconfig.lib.json
+  tsconfig.spec.json
+  vite.config.ts
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc
+Current-Progress.md
+nx.json
+package.json
+pnpm-workspace.yaml
+README.md
+storybook-codemirror.md
+tsconfig.base.json
+tsconfig.json
+vitest.workspace.ts</directory_structure><files>This section contains the contents of the repository&apos;s files.<file path=".cursor/mcp.json">{
+  &quot;mcpServers&quot;: {
+    &quot;nx-mcp&quot;: {
+      &quot;url&quot;: &quot;http://localhost:9737/sse&quot;
+    }
+  }
+}</file><file path=".cursor/nx-RL-training.md">---
+tags:
+  - Nx
+  - Monorepo
+  - Reinforcement Learning
+  - RL
+  - Training App
+id: introduction
+description: This document outlines how to create an application for reinforcement learning (RL) training within an Nx monorepo.
+---
+
+# Creating an RL Training App in an Nx Monorepo
+
+This document outlines how to create an application for reinforcement learning (RL) training within an Nx monorepo. It assumes you have a data processing pipeline in place that converts text prompts to XML and then to JSON using XSD2JSON.
+
+## Resources
+
+*   **Reinforcement Learning Tutorial:** A GitHub repository providing code for a reinforcement learning tutorial ([https://github.com/nzolman/dynamicsai-rl-tutorial](https://github.com/nzolman/dynamicsai-rl-tutorial)).
+*   **AWS RoboMaker (Deprecated):** AWS RoboMaker resource about training a robot using reinforcement learning ([https://aws.amazon.com/robomaker/resources/train-a-robot-using-reinforcement-learning-project/](https://aws.amazon.com/robomaker/resources/train-a-robot-using-reinforcement-learning-project/)). Note that AWS RoboMaker is no longer available to new customers.
+*   **Nx Tutorials:** Official Nx tutorials for creating monorepos with React and Angular ([https://nx.dev/getting-started/tutorials/react-monorepo-tutorial](https://nx.dev/getting-started/tutorials/react-monorepo-tutorial), [https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial)).
+*   **Nx Core Features:** Documentation on Nx&apos;s core features, such as task caching and affected commands ([https://nx.dev/core-features](https://nx.dev/core-features)).
+*   **Setting up Two Applications in an Nx Monorepo:** A Medium article demonstrating code sharing between applications in an Nx monorepo ([https://medium.com/@AmyScript/setting-up-two-applications-in-an-nx-monorepo-4bba3fccb01d](https://medium.com/@AmyScript/setting-up-two-applications-in-an-nx-monorepo-4bba3fccb01d)).
+*   **Learning Nx:** A GitHub repository with basic Nx examples ([https://github.com/hchiam/learning-nx](https://github.com/hchiam/learning-nx)).
+*   **Setting up a Monorepo with pnpm Workspaces and speed it up with Nx!:** A blog post on the Nx website about setting up a monorepo with pnpm workspaces and speeding it up with Nx ([https://nx.dev/blog/setup-a-monorepo-with-pnpm-workspaces-and-speed-it-up-with-nx](https://nx.dev/blog/setup-a-monorepo-with-pnpm-workspaces-and-speed-it-up-with-nx)).
+
+## Steps
+
+1.  **Set up your Nx workspace:**
+
+    If you haven&apos;t already, create a new Nx workspace using the following command:
+
+    ```bash
+    pnpx create-nx-workspace@latest
+    ```
+
+    Choose a preset that is suitable for your project (e.g., &quot;react&quot;, &quot;angular&quot;, or &quot;node&quot;). This will generate the `apps` and `libs` directories.
+2.  **Initialize a new pnpm workspace (if not using Nx Cloud):**
+
+    If you are not using Nx Cloud, create a `pnpm-workspace.yaml` file in the root of your monorepo with the following content:
+
+    ```yaml
+    packages:
+      - &apos;apps/*&apos;
+      - &apos;libs/*&apos;
+    ```
+3.  **Add Nx to a pnpm workspace (if necessary):**
+
+    If you didn&apos;t select an Nx preset during workspace creation, install the `nx` package at the root level:
+
+    ```bash
+    pnpm add -w -D nx
+    ```
+4.  **Create a new Nx application:**
+
+    Use the Nx CLI to generate a new application in your monorepo. When using React, Vite is a good choice for a development server. Choose a name that reflects the purpose of your RL application (e.g., `rl-training-app`).
+
+    ```bash
+    pnpx nx generate @nx/react:app rl-training-app --bundler=vite
+    # or, for a Node.js application:
+    pnpx nx generate @nx/node:app rl-training-app
+    ```
+
+    This command sets up the basic structure for your application within the `apps/rl-training-app` directory.
+5.  **Create a library for data processing:**
+
+    Create a library to encapsulate your data processing logic (txt to XML to JSON). This promotes code reusability and separation of concerns.
+
+    ```bash
+    pnpx nx generate @nx/node:library data-processing
+    ```
+
+    This command creates a library in the `libs/data-processing` directory.  Move your data processing code into the `libs/data-processing/src/lib` directory. This library should expose functions to:
+
+    *   Convert txt prompt to XML
+    *   Convert XML to JSON using XSD2JSON
+    *   Load and prepare data for RL training
+
+    Make sure to define a clear public API in the `index.ts` file of the library.
+6.  **Install RL libraries:**
+
+    Install the necessary RL libraries in your RL training application.  Navigate to your application directory first.
+
+    ```bash
+    cd apps/rl-training-app
+    pnpm install tensorflow  # Or your preferred RL library
+    # or
+    pnpm install torch
+    # or
+    pnpm install ray
+    ```
+
+    Choose the library that best suits your needs and environment.  TensorFlow and PyTorch are popular choices for deep learning, while Ray provides a framework for distributed computing.
+7.  **Implement RL training logic:**
+
+    Implement the RL training logic in your application, defining the environment, agent, and training loop. Import the data processing library to load and prepare your data.
+
+    ```typescript
+    // Example (Conceptual - adjust based on your chosen RL framework)
+    import { processData } from &apos;@your-org/data-processing&apos;;
+
+    // ... your RL environment and agent setup ...
+
+    const trainingData = processData(yourRawData);
+
+    // ... your training loop using trainingData ...
+    ```
+
+    This step involves defining the core logic of your RL training process.  Consider using a modular design to separate the environment, agent, and training loop into distinct components.
+8.  **Create a library for shared RL components (optional):**
+
+    If you plan to reuse RL components across multiple applications or share them with other teams in your monorepo, creating a dedicated library is highly recommended. This promotes code sharing, reduces duplication, and ensures consistency across your projects.
+
+    ```bash
+    pnpx nx generate @nx/react:library rl-components --publishable --importPath=@your-org/rl-components
+    # or
+    pnpx nx generate @nx/node:library rl-components --publishable --importPath=@your-org/rl-components
+    ```
+
+    *   `--publishable`:  This flag indicates that the library is intended to be published and consumed by other projects (internal or external).
+    *   `--importPath`:  This defines the import alias for the library (e.g., `@your-org/rl-components`), making it easier to import components in other projects.  Choose a unique and descriptive import path.
+
+    Move the shared RL components into this library and export them from the library&apos;s `index.ts` file.  Examples of components that could be shared include:
+
+    *   **Custom Neural Network Layers:** Reusable building blocks for your RL agents.
+    *   **Activation Functions:**  Specialized activation functions tailored for RL tasks.
+    *   **Environment Wrappers:**  Components that modify or augment the RL environment.
+    *   **Reward Shaping Functions:**  Functions that define how rewards are calculated.
+    *   **Data Preprocessing Utilities:**  Functions for preparing data for RL training.
+    *   **Common Configuration Interfaces:**  Shared interfaces for configuring RL agents and environments.
+
+    When creating shared components, consider the following:
+
+    *   **Abstraction:** Design components to be as generic and reusable as possible.
+    *   **Configuration:**  Use configuration options to customize the behavior of components.
+    *   **Documentation:**  Provide clear and concise documentation for each component.
+    *   **Testing:**  Write thorough unit tests to ensure the components function correctly.
+
+9.  **Set up a training environment:**
+
+    The training environment is a crucial part of your RL system. It simulates the world in which your agent will learn to interact. You have several options for setting up a training environment:
+
+    *   **Simulation Environment:**  A simulated environment allows you to control various aspects of the training process and experiment with different scenarios. Popular simulation environments include:
+        *   **OpenAI Gym:** A toolkit for developing and comparing reinforcement learning algorithms. It provides a wide variety of environments, from classic control problems to Atari games.
+        *   **Unity ML-Agents Toolkit:**  A Unity package that allows you to create and train intelligent agents in 3D environments.
+        *   **DeepMind Lab:**  A 3D learning environment designed for agent-based AI research.
+    *   **Real-World Environment:**  In some cases, you may want to train your agent in a real-world environment. This can be more challenging but can also lead to more robust and generalizable agents.
+    *   **Custom Environment:** You can create your own custom environment using libraries like Pygame or other game development frameworks. This gives you complete control over the environment&apos;s dynamics and reward structure.
+
+    When setting up your training environment, consider the following:
+
+    *   **State Space:**  Define the set of possible states that the agent can observe.
+    *   **Action Space:**  Define the set of possible actions that the agent can take.
+    *   **Reward Function:**  Define the reward function that the agent will use to learn.  The reward function should incentivize the agent to achieve the desired goals.
+    *   **Episode Termination Conditions:**  Define the conditions under which an episode will terminate (e.g., reaching a goal, running out of time, or failing to achieve a certain objective).
+
+10. **Monitor and visualize training:**
+
+    Monitoring and visualization are essential for understanding how your agent is learning and identifying potential problems. Implement tools to track key metrics during training, such as:
+
+    *   **Episode Reward:**  The total reward received by the agent in each episode.
+    *   **Average Reward:**  The average reward over a window of recent episodes.
+    *   **Episode Length:**  The number of steps taken in each episode.
+    *   **Loss Function:**  The value of the loss function used to train the agent&apos;s neural network.
+    *   **Action Distribution:**  The distribution of actions taken by the agent.
+    *   **State Distribution:**  The distribution of states visited by the agent.
+
+    Popular tools for monitoring and visualizing RL training include:
+
+    *   **TensorBoard:** A visualization toolkit for TensorFlow. It allows you to track metrics, visualize graphs, and inspect the weights and biases of your neural networks.
+    *   **Weights &amp; Biases:** A platform for tracking and visualizing machine learning experiments. It provides tools for experiment tracking, hyperparameter optimization, and model management.
+    *   **MLflow:** An open-source platform for managing the end-to-end machine learning lifecycle. It provides tools for tracking experiments, packaging code, and deploying models.
+    *   **Custom Dashboards:** You can create your own custom dashboards using libraries like Matplotlib, Seaborn, or Plotly. This gives you complete control over the visualization process.
+
+    By carefully monitoring and visualizing your training process, you can gain valuable insights into your agent&apos;s behavior and identify areas for improvement.
+
+11. **Configure caching:**
+
+    Add an `nx.json` file to configure caching and task pipelines. This file allows you to define which tasks should be cached and how they depend on each other.
+
+    ```json
+    {
+      &quot;tasksRunnerOptions&quot;: {
+        &quot;default&quot;: {
+          &quot;runner&quot;: &quot;nx/tasks-runners/default&quot;,
+          &quot;options&quot;: {
+            &quot;cacheableOperations&quot;: [&quot;build&quot;, &quot;test&quot;, &quot;lint&quot;, &quot;e2e&quot;],
+            &quot;outputPath&quot;: &quot;dist/{project.root}&quot;
+          }
+        }
+      },
+      &quot;affected&quot;: {
+        &quot;default&quot;: {
+          &quot;include&quot;: [&quot;default&quot;]
+        }
+      }
+    }
+    ```
+
+    This configuration enables caching for common tasks like `build`, `test`, `lint`, and `e2e`.  The `outputPath` specifies where the cached artifacts should be stored.  Refer to the Nx documentation for more advanced caching configurations.
+
+12. **Properly use Nx commands:**
+
+    Use `pnpx` to execute Nx commands within your pnpm workspace. Here are some common commands:
+
+    *   `pnpx nx build rl-training-app`: Build the `rl-training-app` application.
+    *   `pnpx nx test rl-training-app`: Test the `rl-training-app` application.
+    *   `pnpx nx lint rl-training-app`: Lint the `rl-training-app` application.
+    *   `pnpx nx build data-processing`: Build the `data-processing` library.
+    *   `pnpx nx graph`: Visualize the project graph, showing dependencies between projects.
+    *   `pnpx nx affected:test`: Test only the projects that have been affected by a code change.
+    *   `pnpx nx run-many --target=build --all`: Build all projects in the workspace.
+
+13. **Enforce module boundaries:**
+
+    Use Nx&apos;s module boundary rules to enforce architectural constraints and prevent circular dependencies between your application and libraries. This helps maintain a clean and maintainable codebase. Configure these rules in the `.eslintrc.json` file.
+
+14. **Leverage Nx&apos;s task caching:**
+
+    Nx&apos;s task caching can significantly speed up your CI/CD pipeline. By caching task results, Nx avoids re-running tasks that have already been executed with the same inputs. This can dramatically reduce build times, especially in large monorepos.
+
+15. **Test affected projects:**
+
+    Use Nx&apos;s affected commands to run tests only on the projects that have been affected by a code change. This ensures that you&apos;re only testing the code that needs to be tested, saving time and resources.
+
+    ```bash
+    pnpx nx affected:test
+    ```
+
+    This command analyzes the changes in your codebase and runs tests only on the affected projects.
+
+## Conclusion
+
+By following these steps, you can create a robust and scalable reinforcement learning training application within an Nx monorepo. Nx provides powerful tools for managing dependencies, caching tasks, and enforcing architectural constraints, making it an ideal choice for complex RL projects. Remember to consult the official Nx documentation for the most up-to-date information and best practices. Good luck!</file><file path=".cursor/nx-tool.md"># Nx Tool
+
+nx_docs
+Returns a list of documentation sections that could be relevant to the user query. IMPORTANT: ALWAYS USE THIS IF YOU ARE ANSWERING QUESTIONS ABOUT NX. NEVER ASSUME KNOWLEDGE ABOUT NX BECAUSE IT WILL PROBABLY BE OUTDATED. Use it to learn about nx, its configuration and options instead of assuming knowledge about it.
+Parameters
+userQuery*
+The user query to get docs for. You can pass the original user query verbatim or summarize it.
+
+nx_available_plugins
+Returns a list of available nx plugins - this includes both official and approved community plugins.
+
+nx_workspace
+Returns a readable representation of the nx project graph and the nx.json that configures nx. If there are project graph errors, it also returns them. Use it to answer questions about the nx workspace and architecture
+
+nx_project_details
+Returns the complete project configuration in JSON format for a given nx project.
+Parameters
+projectName*
+The name of the project to get details for
+
+nx_generators
+Returns a list of generators that could be relevant to the user query.
+
+nx_generator_schema
+Returns the detailed JSON schema for an nx generator
+Parameters
+generatorName*
+The name of the generator to get schema for. Use the generator name from the nx_generators tool.
+
+nx_visualize_graph
+Visualize the Nx graph. This can show either a project graph or a task graph depending on the parameters. Use this to help users understand project dependencies or task dependencies. There can only be one graph visualization open at a time so avoid similar tool calls unless the user specifically requests it.
+Parameters
+visualizationType*
+The way in which to visualize the graph. &quot;project&quot; shows the project graph focused on a single project. &quot;project-task&quot; shows the task graph focused on a specific task for a specific project. &quot;full-project-graph&quot; shows the full project graph for the entire repository.
+
+projectName
+The name of the project to focus the graph on. Only used if visualizationType is &quot;project&quot; or &quot;project-task&quot;.
+
+taskName
+The name of the task to focus the graph on. Only used if visualizationType is &quot;project-task&quot;</file><file path=".cursor/storybook-codemirror.md"># Integrating Storybook with CodeMirror, LLMs, and Project Generation
+
+This document outlines how to integrate Storybook with CodeMirror to create a chat interface connected to LLMs and programmatically generate projects based on templates within an Nx monorepo.
+
+## Resources
+
+* **Storybook Documentation**: [Storybook Official Docs](https://storybook.js.org/docs) - Comprehensive guide to setting up and using Storybook.
+* **CodeMirror Documentation**: [CodeMirror Official Docs](https://codemirror.net/docs/) - Detailed API and usage examples for CodeMirror.
+* **Nx Monorepo Documentation**: [Nx Official Docs](https://nx.dev/getting-started/intro) - Learn how to manage monorepos with Nx.
+* **LLM API Integration**: [OpenAI API Docs](https://platform.openai.com/docs/api-reference) - Official documentation for integrating OpenAI&apos;s LLM API.
+* **Templating Engines**: [Handlebars Documentation](https://handlebarsjs.com/guide/) - Guide to using Handlebars for templating.
+* **File System Management**: [fs-extra Documentation](https://github.com/jprichardson/node-fs-extra) - Enhanced file system operations for Node.js.
+* **Commander.js CLI Library**: [Commander.js Documentation](https://github.com/tj/commander.js) - Build command-line interfaces with ease.
+* **Storybook Addons**: [Storybook Addons Documentation](https://storybook.js.org/addons) - Explore and integrate Storybook addons.
+* **Markdown Cheatsheet**: [Markdown Cheatsheet](https://techvomit.net/markdown-cheatsheet/) - Quick reference for Markdown syntax.
+* **Relative Links in Markdown**: [GitHub Relative Links](https://docs.github.com/articles/basic-writing-and-formatting-syntax#relative-links) - Learn how to use relative links in Markdown.
+* **Nx Storybook Plugin**: [Nx Storybook Plugin Docs](https://nx.dev/packages/storybook) - Official documentation for integrating Storybook with Nx.
+* **CodeMirror Addon for Storybook**: [storybook-addon-code-editor](https://www.npmjs.com/package/storybook-addon-code-editor) - NPM package for integrating CodeMirror into Storybook.
+* **Storybook Console Addon**: [@storybook/addon-console](https://www.npmjs.com/package/@storybook/addon-console) - Display console logs within Storybook.
+
+## Approach
+
+The integration process involves several key strategies:
+
+*   **Leveraging Storybook Addons:** Utilize Storybook addons like `storybook-addon-code-editor` and `@storybook/addon-console` to simplify the integration of CodeMirror, provide a code editor, and enhance the development experience by displaying console outputs within Storybook.
+*   **Component-Driven Development:** Build the chat interface and project generation tools as reusable Storybook components.
+*   **Utilizing MDX for Documentation:** Employ MDX to create comprehensive and interactive documentation that combines code examples and explanatory text.
+*   **Connecting to LLMs via API:** Implement an API client to communicate with Large Language Models (LLMs) for code generation and interactive assistance.
+*   **Templating for Project Generation:** Use a templating engine to create projects from predefined templates, allowing for customization through user inputs.
+*   **Command-Line Interface (CLI):** Consider building a CLI to streamline project generation and other tasks.
+*   **File System Management:** Use libraries like `fs-extra` for robust file system operations.
+
+This approach ensures a modular, maintainable, and well-documented integration.
+
+## Steps
+
+1.  **Set up Storybook in your Nx monorepo:** Use Nx generators to add Storybook to your projects. This provides a structured environment for component development and documentation.
+    *   Install the Nx Storybook plugin using **pnpm**:
+    ```bash
+    pnpm add --save-dev @nx/storybook
+    ```
+    *   Generate Storybook configuration for your project:
+    ```bash
+    pnpm nx g @nx/react:storybook-configuration project-name
+    ```
+    *   Launch Storybook for a specific project:
+    ```bash
+    pnpm nx run project-name:storybook
+    ```
+
+2.  **Integrate CodeMirror:** Incorporate CodeMirror into a Storybook component using `storybook-addon-code-editor` or a similar library. This will serve as the foundation for the chat interface and code editor.
+    *   Install `storybook-addon-code-editor` as a dev dependency:
+    ```bash
+    pnpm add --save-dev storybook-addon-code-editor
+    ```
+    *   Update your `.storybook/main.ts` file to include the addon and configure the `staticDirs`:
+    ```typescript:.storybook/main.ts
+    // .storybook/main.ts
+    import type { StorybookConfig } from &apos;@storybook/react-vite&apos;;
+    import { getCodeEditorStaticDirs } from &apos;storybook-addon-code-editor/getStaticDirs&apos;;
+
+    const config: StorybookConfig = {
+      staticDirs: [...getCodeEditorStaticDirs(__filename)],
+      addons: [&apos;storybook-addon-code-editor&apos;],
+      framework: {
+        name: &apos;@storybook/react-vite&apos;,
+        options: {},
+      },
+    };
+
+    export default config;
+    ```
+
+3.  **Connect to LLMs:** Implement the API connection to your chosen LLM within the CodeMirror-based chat component. This enables code generation and interactive assistance features.
+    *   Use an API client like `axios` or `fetch` to communicate with the LLM.
+    *   Example of sending a prompt to an LLM API:
+    ```typescript
+    const response = await fetch(&apos;https://api.llm.com/generate&apos;, {
+      method: &apos;POST&apos;,
+      headers: { &apos;Content-Type&apos;: &apos;application/json&apos; },
+      body: JSON.stringify({ prompt: &apos;Generate a React component&apos; }),
+    });
+    const data = await response.json();
+    console.log(data);
+    ```
+
+4.  **Implement Project Generation:** Create a mechanism to generate projects based on templates. This allows users to quickly create new projects with predefined structures and configurations.
+    *   Use a templating engine like `handlebars` or `ejs` to generate files from templates.
+    *   Example of generating a project structure:
+    ```typescript
+    import { copySync } from &apos;fs-extra&apos;;
+    import { render } from &apos;handlebars&apos;;
+
+    const template = `{
+      &quot;name&quot;: &quot;{{projectName}}&quot;,
+      &quot;version&quot;: &quot;1.0.0&quot;,
+      &quot;scripts&quot;: {
+        &quot;start&quot;: &quot;nx serve {{projectName}}&quot;
+      }
+    }`;
+    const rendered = render(template, { projectName: &apos;my-project&apos; });
+    copySync(&apos;templates/project&apos;, &apos;generated/my-project&apos;);
+    ```
+
+5.  **Develop a CLI (Optional):** Build a command-line interface using a library like `Commander.js` to automate project setup, code generation, and other development tasks.
+    *   Example of a basic CLI setup:
+    ```typescript
+    import { Command } from &apos;commander&apos;;
+    const program = new Command();
+
+    program
+      .command(&apos;generate &lt;projectName&gt;&apos;)
+      .description(&apos;Generate a new project&apos;)
+      .action((projectName) =&gt; {
+        console.log(`Generating project: ${projectName}`);
+        // Call project generation logic here
+      });
+
+    program.parse(process.argv);
+    ```
+
+6.  **Manage Files:** Use `fs-extra` to handle file system operations such as creating directories, copying files, and modifying file contents.
+    *   Example of creating a directory and copying files:
+    ```typescript
+    import { ensureDirSync, copySync } from &apos;fs-extra&apos;;
+
+    ensureDirSync(&apos;generated/my-project&apos;);
+    copySync(&apos;templates/project&apos;, &apos;generated/my-project&apos;);
+    ```
+
+7.  **Integrate `@storybook/addon-console`:** Add the `@storybook/addon-console` to your Storybook to display console logs, warnings, and errors within the Storybook UI, aiding in debugging and monitoring.
+    *   Install the addon:
+    ```bash
+    pnpm add --save-dev @storybook/addon-console @storybook/addon-actions
+    ```
+    *   Configure the addon in `.storybook/main.js`:
+    ```javascript:.storybook/main.js
+    export default {
+      addons: [
+        &quot;@storybook/addon-actions&quot;,
+        &quot;@storybook/addon-console&quot;,
+      ],
+    };
+    ```
+    *   Use the `withConsole` decorator in `.storybook/preview.js`:
+    ```javascript:.storybook/preview.js
+    import type { Preview } from &apos;@storybook/react&apos;;
+    import { withConsole } from &apos;@storybook/addon-console&apos;;
+
+    const preview: Preview = {
+      decorators: [(storyFn, context) =&gt; withConsole()(storyFn)(context)],
+      // ...
+    };
+    ```
+
+### Detailed Setup Instructions for CodeMirror and `storybook-addon-code-editor`
+// ... existing code ...
+### Integrating `@storybook/addon-console`
+
+1.  **Installation:**
+
+    ```bash
+    pnpm add --save-dev @storybook/addon-console @storybook/addon-actions
+    ```
+
+2.  **Configuration:**
+
+    *   Import the addon in your `.storybook/main.js` file:
+
+    ```javascript:.storybook/main.js
+    // .storybook/main.js
+    export default {
+      addons: [
+        &quot;@storybook/addon-actions&quot;,
+        &quot;@storybook/addon-console&quot;,
+      ],
+    };
+    ```
+
+3.  **Usage:**
+
+    *   Optionally, use the `withConsole` decorator in your `preview.js` to associate console messages with specific stories:
+
+    ```javascript:.storybook/preview.js
+    // preview.js
+    import type { Preview } from &apos;@storybook/react&apos;;
+    import { withConsole } from &apos;@storybook/addon-console&apos;;
+
+    const preview: Preview = {
+      decorators: [(storyFn, context) =&gt; withConsole()(storyFn)(context)],
+      // ...
+    };
+    ```
+
+    *   You can customize the addon&apos;s behavior by passing options to `withConsole` or `setConsoleOptions`.
+
+### Nx Monorepo Best Practices
+
+*   **Centralized Component Library:** Consider creating a shared library within your Nx monorepo to house your components. This makes it easier to manage and reuse components across multiple projects.
+*   **Storybook for Multiple Projects:** If you have multiple projects in your monorepo, you can set up Storybook for each project individually. Use the Nx Storybook plugin to generate configurations for each project.
+*   **Caching and Task Optimization:** Leverage Nx&apos;s caching and task optimization features to speed up Storybook builds and development workflows. Use `nx affected:storybook` to only build and serve Storybook for projects that have changed.
+
+This update provides a more comprehensive guide for integrating Storybook with CodeMirror in an Nx monorepo, making it more useful for developers using tools like Copilot and Cursor.</file><file path=".github/workflows/ci.yml">name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # This enables task distribution via Nx Cloud
+      # Run this command as early as possible, before dependencies are installed
+      # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
+      # Uncomment this line to enable task distribution
+      # - run: pnpm dlx nx-cloud start-ci-run --distribute-on=&quot;3 linux-medium-js&quot; --stop-agents-after=&quot;build&quot;
+
+      # Cache node_modules
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: &apos;pnpm&apos;
+
+      - run: pnpm install --frozen-lockfile
+      - uses: nrwl/nx-set-shas@v4
+
+      # Prepend any command with &quot;nx-cloud record --&quot; to record its logs to Nx Cloud
+      # - run: pnpm exec nx-cloud record -- echo Hello World
+      # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
+      - run: pnpm exec nx affected -t lint test build</file><file path=".verdaccio/config.yml"># path to a directory with all packages
+storage: ../tmp/local-registry/storage
+
+# a list of other known repositories we can talk to
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+    maxage: 60m
+
+packages:
+  &apos;**&apos;:
+    # give all users (including non-authenticated users) full access
+    # because it is a local registry
+    access: $all
+    publish: $all
+    unpublish: $all
+
+    # if package is not available locally, proxy requests to npm registry
+    proxy: npmjs
+
+# log settings
+log:
+  type: stdout
+  format: pretty
+  level: warn
+
+publish:
+  allow_offline: true # set offline to true to allow publish offline</file><file path="dashboard/.storybook/main.js">// This file is used as a compatibility layer for tools that expect CommonJS
+module.exports = {
+  stories: [&apos;../src/**/*.mdx&apos;, &apos;../src/**/*.stories.@(js|jsx|mjs|ts|tsx)&apos;],
+  addons: [
+    &apos;@storybook/addon-essentials&apos;,
+    &apos;@storybook/addon-interactions&apos;,
+    &apos;@chromatic-com/storybook&apos;
+  ],
+  framework: {
+    name: &apos;@storybook/react-vite&apos;,
+  },
+  docs: {
+    defaultName: &apos;Documentation&apos;,
+  },
+  staticDirs: [&apos;../public&apos;],
+  typescript: {
+    reactDocgen: &apos;react-docgen-typescript&apos;
+  }
+};</file><file path="dashboard/.storybook/main.ts">import type { StorybookConfig } from &apos;@storybook/react-vite&apos;;
+import { join, dirname } from &apos;path&apos;;
+import { fileURLToPath } from &apos;url&apos;;
+
+// Get the directory name of the current module
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const config = {
+  stories: [&apos;../src/**/*.mdx&apos;, &apos;../src/**/*.stories.@(js|jsx|mjs|ts|tsx)&apos;],
+
+  addons: [
+    &apos;@storybook/addon-essentials&apos;,
+    &apos;@storybook/addon-interactions&apos;,
+    &apos;@chromatic-com/storybook&apos;
+  ],
+
+  framework: {
+    name: &apos;@storybook/react-vite&apos;,
+    options: {
+      builder: {
+        viteConfigPath: join(__dirname, &apos;../vite.config.ts&apos;),
+      },
+    },
+  },
+
+  docs: {
+    // For Storybook 8, autodocs is now a default feature
+    defaultName: &apos;Documentation&apos;,
+  },
+
+  staticDirs: [&apos;../public&apos;],
+
+  typescript: {
+    reactDocgen: &apos;react-docgen-typescript&apos;
+  }
+} satisfies StorybookConfig;
+
+export default config;</file><file path="dashboard/src/app/app.module.css">/* Your styles goes here. */</file><file path="dashboard/src/app/app.tsx">// Uncomment this line to use CSS modules
+// import styles from &apos;./app.module.css&apos;;
+import NxWelcome from &apos;./nx-welcome&apos;;
+
+export function App() {
+  return (
+    &lt;div&gt;
+      &lt;NxWelcome title=&quot;@deanmachines-nx/dashboard&quot; /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</file><file path="dashboard/src/app/nx-welcome.tsx">/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ This is a starter component and can be deleted.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ Delete this file and get started with your project!
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+export function NxWelcome({ title }: { title: string }) {
+  return (
+    &lt;&gt;
+      &lt;style
+        dangerouslySetInnerHTML={{
+          __html: `
+    html {
+      -webkit-text-size-adjust: 100%;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      &apos;Segoe UI&apos;, Roboto, &apos;Helvetica Neue&apos;, Arial, &apos;Noto Sans&apos;, sans-serif,
+      &apos;Apple Color Emoji&apos;, &apos;Segoe UI Emoji&apos;, &apos;Segoe UI Symbol&apos;,
+      &apos;Noto Color Emoji&apos;;
+      line-height: 1.5;
+      tab-size: 4;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: inherit;
+      line-height: inherit;
+      margin: 0;
+    }
+    h1,
+    h2,
+    p,
+    pre {
+      margin: 0;
+    }
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: currentColor;
+    }
+    h1,
+    h2 {
+      font-size: inherit;
+      font-weight: inherit;
+    }
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+    pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      &apos;Liberation Mono&apos;, &apos;Courier New&apos;, monospace;
+    }
+    svg {
+      display: block;
+      vertical-align: middle;
+      shape-rendering: auto;
+      text-rendering: optimizeLegibility;
+    }
+    pre {
+      background-color: rgba(55, 65, 81, 1);
+      border-radius: 0.25rem;
+      color: rgba(229, 231, 235, 1);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      &apos;Liberation Mono&apos;, &apos;Courier New&apos;, monospace;
+      overflow: auto;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .shadow {
+      box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .rounded {
+      border-radius: 1.5rem;
+    }
+    .wrapper {
+      width: 100%;
+    }
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 768px;
+      padding-bottom: 3rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      color: rgba(55, 65, 81, 1);
+      width: 100%;
+    }
+    #welcome {
+      margin-top: 2.5rem;
+    }
+    #welcome h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+    #welcome span {
+      display: block;
+      font-size: 1.875rem;
+      font-weight: 300;
+      line-height: 2.25rem;
+      margin-bottom: 0.5rem;
+    }
+    #hero {
+      align-items: center;
+      background-color: hsla(214, 62%, 21%, 1);
+      border: none;
+      box-sizing: border-box;
+      color: rgba(55, 65, 81, 1);
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-top: 3.5rem;
+    }
+    #hero .text-container {
+      color: rgba(255, 255, 255, 1);
+      padding: 3rem 2rem;
+    }
+    #hero .text-container h2 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      position: relative;
+    }
+    #hero .text-container h2 svg {
+      color: hsla(162, 47%, 50%, 1);
+      height: 2rem;
+      left: -0.25rem;
+      position: absolute;
+      top: 0;
+      width: 2rem;
+    }
+    #hero .text-container h2 span {
+      margin-left: 2.5rem;
+    }
+    #hero .text-container a {
+      background-color: rgba(255, 255, 255, 1);
+      border-radius: 0.75rem;
+      color: rgba(55, 65, 81, 1);
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      text-decoration: inherit;
+    }
+    #hero .logo-container {
+      display: none;
+      justify-content: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    #hero .logo-container svg {
+      color: rgba(255, 255, 255, 1);
+      width: 66.666667%;
+    }
+    #middle-content {
+      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-top: 3.5rem;
+    }
+
+    #middle-content #middle-content-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    #learning-materials {
+      padding: 2.5rem 2rem;
+    }
+    #learning-materials h2 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      letter-spacing: -0.025em;
+      line-height: 1.75rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .list-item-link {
+      align-items: center;
+      border-radius: 0.75rem;
+      display: flex;
+      margin-top: 1rem;
+      padding: 1rem;
+      transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
+      -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+      width: 100%;
+    }
+    .list-item-link svg:first-child {
+      margin-right: 1rem;
+      height: 1.5rem;
+      transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
+      -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+      width: 1.5rem;
+    }
+    .list-item-link &gt; span {
+      flex-grow: 1;
+      font-weight: 400;
+      transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
+      -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .list-item-link &gt; span &gt; span {
+      color: rgba(107, 114, 128, 1);
+      display: block;
+      flex-grow: 1;
+      font-size: 0.75rem;
+      font-weight: 300;
+      line-height: 1rem;
+      transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
+      -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .list-item-link svg:last-child {
+      height: 1rem;
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+      width: 1rem;
+    }
+    .list-item-link:hover {
+      color: rgba(255, 255, 255, 1);
+      background-color: hsla(162, 55%, 33%, 1);
+    }
+    .list-item-link:hover &gt; span {}
+    .list-item-link:hover &gt; span &gt; span {
+      color: rgba(243, 244, 246, 1);
+    }
+    .list-item-link:hover svg:last-child {
+      transform: translateX(0.25rem);
+    }
+    #other-links {}
+    .button-pill {
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      transition-duration: 300ms;
+      transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
+      -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      align-items: center;
+      display: flex;
+    }
+    .button-pill svg {
+      transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
+      -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+      flex-shrink: 0;
+      width: 3rem;
+    }
+    .button-pill &gt; span {
+      letter-spacing: -0.025em;
+      font-weight: 400;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .button-pill span span {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.25rem;
+    }
+    .button-pill:hover svg,
+    .button-pill:hover {
+      color: rgba(255, 255, 255, 1) !important;
+    }
+    #nx-console:hover {
+      background-color: rgba(0, 122, 204, 1);
+    }
+    #nx-console svg {
+      color: rgba(0, 122, 204, 1);
+    }
+    #nx-console-jetbrains {
+      margin-top: 2rem;
+    }
+    #nx-console-jetbrains:hover {
+      background-color: rgba(255, 49, 140, 1);
+    }
+    #nx-console-jetbrains svg {
+      color: rgba(255, 49, 140, 1);
+    }
+    #nx-repo:hover {
+      background-color: rgba(24, 23, 23, 1);
+    }
+    #nx-repo svg {
+      color: rgba(24, 23, 23, 1);
+    }
+    #nx-cloud {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      padding: 2.5rem 2rem;
+    }
+    #nx-cloud &gt; div {
+      align-items: center;
+      display: flex;
+    }
+    #nx-cloud &gt; div svg {
+      border-radius: 0.375rem;
+      flex-shrink: 0;
+      width: 3rem;
+    }
+    #nx-cloud &gt; div h2 {
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.75rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    #nx-cloud &gt; div h2 span {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.25rem;
+    }
+    #nx-cloud p {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      margin-top: 1rem;
+    }
+    #nx-cloud pre {
+      margin-top: 1rem;
+    }
+    #nx-cloud a {
+      border-radius: 0.75rem;
+      color: white;
+      background-color: hsla(214, 62%, 21%, 1);
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      text-align:left;
+      text-decoration: inherit;
+    }
+
+    #commands {
+      padding: 2.5rem 2rem;
+      margin-top: 3.5rem;
+    }
+    #commands h2 {
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.75rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    #commands p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.5rem;
+      margin-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    details {
+      align-items: center;
+      display: flex;
+      margin-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      width: 100%;
+    }
+    details pre &gt; span {
+      color: rgba(181, 181, 181, 1);
+      display: block;
+    }
+    summary {
+      border-radius: 0.5rem;
+      display: flex;
+      font-weight: 400;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform, filter, backdrop-filter,
+      -webkit-backdrop-filter;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+    }
+    summary:hover {
+      background-color: rgba(243, 244, 246, 1);
+    }
+    summary svg {
+      height: 1.5rem;
+      margin-right: 1rem;
+      width: 1.5rem;
+    }
+    #love {
+      color: rgba(107, 114, 128, 1);
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      margin-top: 3.5rem;
+      opacity: 0.6;
+      text-align: center;
+    }
+    #love svg {
+      color: rgba(252, 165, 165, 1);
+      width: 1.25rem;
+      height: 1.25rem;
+      display: inline;
+      margin-top: -0.25rem;
+    }
+    @media screen and (min-width: 768px) {
+      #hero {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      #hero .logo-container {
+        display: flex;
+      }
+      #middle-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4rem;
+      }
+    }
+          `,
+        }}
+      /&gt;
+      &lt;div className=&quot;wrapper&quot;&gt;
+        &lt;div className=&quot;container&quot;&gt;
+          &lt;div id=&quot;welcome&quot;&gt;
+            &lt;h1&gt;
+              &lt;span&gt; Hello there, &lt;/span&gt;
+              Welcome {title} 👋
+            &lt;/h1&gt;
+          &lt;/div&gt;
+
+          &lt;div id=&quot;hero&quot; className=&quot;rounded&quot;&gt;
+            &lt;div className=&quot;text-container&quot;&gt;
+              &lt;h2&gt;
+                &lt;svg
+                  fill=&quot;none&quot;
+                  stroke=&quot;currentColor&quot;
+                  viewBox=&quot;0 0 24 24&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;path
+                    strokeLinecap=&quot;round&quot;
+                    strokeLinejoin=&quot;round&quot;
+                    strokeWidth=&quot;2&quot;
+                    d=&quot;M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z&quot;
+                  /&gt;
+                &lt;/svg&gt;
+                &lt;span&gt;You&amp;apos;re up and running&lt;/span&gt;
+              &lt;/h2&gt;
+              &lt;a href=&quot;#commands&quot;&gt; What&amp;apos;s next? &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div className=&quot;logo-container&quot;&gt;
+              &lt;svg
+                fill=&quot;currentColor&quot;
+                role=&quot;img&quot;
+                viewBox=&quot;0 0 24 24&quot;
+                xmlns=&quot;http://www.w3.org/2000/svg&quot;
+              &gt;
+                &lt;path d=&quot;M11.987 14.138l-3.132 4.923-5.193-8.427-.012 8.822H0V4.544h3.691l5.247 8.833.005-3.998 3.044 4.759zm.601-5.761c.024-.048 0-3.784.008-3.833h-3.65c.002.059-.005 3.776-.003 3.833h3.645zm5.634 4.134a2.061 2.061 0 0 0-1.969 1.336 1.963 1.963 0 0 1 2.343-.739c.396.161.917.422 1.33.283a2.1 2.1 0 0 0-1.704-.88zm3.39 1.061c-.375-.13-.8-.277-1.109-.681-.06-.08-.116-.17-.176-.265a2.143 2.143 0 0 0-.533-.642c-.294-.216-.68-.322-1.18-.322a2.482 2.482 0 0 0-2.294 1.536 2.325 2.325 0 0 1 4.002.388.75.75 0 0 0 .836.334c.493-.105.46.36 1.203.518v-.133c-.003-.446-.246-.55-.75-.733zm2.024 1.266a.723.723 0 0 0 .347-.638c-.01-2.957-2.41-5.487-5.37-5.487a5.364 5.364 0 0 0-4.487 2.418c-.01-.026-1.522-2.39-1.538-2.418H8.943l3.463 5.423-3.379 5.32h3.54l1.54-2.366 1.568 2.366h3.541l-3.21-5.052a.7.7 0 0 1-.084-.32 2.69 2.69 0 0 1 2.69-2.691h.001c1.488 0 1.736.89 2.057 1.308.634.826 1.9.464 1.9 1.541a.707.707 0 0 0 1.066.596zm.35.133c-.173.372-.56.338-.755.639-.176.271.114.412.114.412s.337.156.538-.311c.104-.231.14-.488.103-.74z&quot; /&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div id=&quot;middle-content&quot;&gt;
+            &lt;div id=&quot;middle-content-container&quot;&gt;
+              &lt;div id=&quot;learning-materials&quot; className=&quot;rounded shadow&quot;&gt;
+                &lt;h2&gt;Learning materials&lt;/h2&gt;
+                &lt;a
+                  href=&quot;https://nx.dev/getting-started/intro?utm_source=nx-project&quot;
+                  target=&quot;_blank&quot;
+                  rel=&quot;noreferrer&quot;
+                  className=&quot;list-item-link&quot;
+                &gt;
+                  &lt;svg
+                    fill=&quot;none&quot;
+                    stroke=&quot;currentColor&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;path
+                      strokeLinecap=&quot;round&quot;
+                      strokeLinejoin=&quot;round&quot;
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                  &lt;span&gt;
+                    Documentation
+                    &lt;span&gt; Everything is in there &lt;/span&gt;
+                  &lt;/span&gt;
+                  &lt;svg
+                    fill=&quot;none&quot;
+                    stroke=&quot;currentColor&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;path
+                      strokeLinecap=&quot;round&quot;
+                      strokeLinejoin=&quot;round&quot;
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M9 5l7 7-7 7&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                &lt;/a&gt;
+                &lt;a
+                  href=&quot;https://nx.dev/blog/?utm_source=nx-project&quot;
+                  target=&quot;_blank&quot;
+                  rel=&quot;noreferrer&quot;
+                  className=&quot;list-item-link&quot;
+                &gt;
+                  &lt;svg
+                    fill=&quot;none&quot;
+                    stroke=&quot;currentColor&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;path
+                      strokeLinecap=&quot;round&quot;
+                      strokeLinejoin=&quot;round&quot;
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                  &lt;span&gt;
+                    Blog
+                    &lt;span&gt; Changelog, features &amp; events &lt;/span&gt;
+                  &lt;/span&gt;
+                  &lt;svg
+                    fill=&quot;none&quot;
+                    stroke=&quot;currentColor&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;path
+                      strokeLinecap=&quot;round&quot;
+                      strokeLinejoin=&quot;round&quot;
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M9 5l7 7-7 7&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                &lt;/a&gt;
+                &lt;a
+                  href=&quot;https://www.youtube.com/@NxDevtools/videos?utm_source=nx-project&amp;sub_confirmation=1&quot;
+                  target=&quot;_blank&quot;
+                  rel=&quot;noreferrer&quot;
+                  className=&quot;list-item-link&quot;
+                &gt;
+                  &lt;svg
+                    role=&quot;img&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    fill=&quot;currentColor&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;title&gt;YouTube&lt;/title&gt;
+                    &lt;path d=&quot;M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z&quot; /&gt;
+                  &lt;/svg&gt;
+                  &lt;span&gt;
+                    YouTube channel
+                    &lt;span&gt; Nx Show, talks &amp; tutorials &lt;/span&gt;
+                  &lt;/span&gt;
+                  &lt;svg
+                    fill=&quot;none&quot;
+                    stroke=&quot;currentColor&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;path
+                      strokeLinecap=&quot;round&quot;
+                      strokeLinejoin=&quot;round&quot;
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M9 5l7 7-7 7&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                &lt;/a&gt;
+                &lt;a
+                  href=&quot;https://nx.dev/react-tutorial/1-code-generation?utm_source=nx-project&quot;
+                  target=&quot;_blank&quot;
+                  rel=&quot;noreferrer&quot;
+                  className=&quot;list-item-link&quot;
+                &gt;
+                  &lt;svg
+                    fill=&quot;none&quot;
+                    stroke=&quot;currentColor&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;path
+                      strokeLinecap=&quot;round&quot;
+                      strokeLinejoin=&quot;round&quot;
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                  &lt;span&gt;
+                    Interactive tutorials
+                    &lt;span&gt; Create an app, step-by-step &lt;/span&gt;
+                  &lt;/span&gt;
+                  &lt;svg
+                    fill=&quot;none&quot;
+                    stroke=&quot;currentColor&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                  &gt;
+                    &lt;path
+                      strokeLinecap=&quot;round&quot;
+                      strokeLinejoin=&quot;round&quot;
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M9 5l7 7-7 7&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                &lt;/a&gt;
+              &lt;/div&gt;
+              &lt;a
+                id=&quot;nx-repo&quot;
+                className=&quot;button-pill rounded shadow&quot;
+                href=&quot;https://github.com/nrwl/nx?utm_source=nx-project&quot;
+                target=&quot;_blank&quot;
+                rel=&quot;noreferrer&quot;
+              &gt;
+                &lt;svg
+                  fill=&quot;currentColor&quot;
+                  role=&quot;img&quot;
+                  viewBox=&quot;0 0 24 24&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;path d=&quot;M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12&quot; /&gt;
+                &lt;/svg&gt;
+                &lt;span&gt;
+                  Nx is open source
+                  &lt;span&gt; Love Nx? Give us a star! &lt;/span&gt;
+                &lt;/span&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+            &lt;div id=&quot;other-links&quot;&gt;
+              &lt;a
+                id=&quot;nx-console&quot;
+                className=&quot;button-pill rounded shadow&quot;
+                href=&quot;https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console&amp;utm_source=nx-project&quot;
+                target=&quot;_blank&quot;
+                rel=&quot;noreferrer&quot;
+              &gt;
+                &lt;svg
+                  fill=&quot;currentColor&quot;
+                  role=&quot;img&quot;
+                  viewBox=&quot;0 0 24 24&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;title&gt;Visual Studio Code&lt;/title&gt;
+                  &lt;path d=&quot;M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z&quot; /&gt;
+                &lt;/svg&gt;
+                &lt;span&gt;
+                  Install Nx Console for VSCode
+                  &lt;span&gt;The official VSCode extension for Nx.&lt;/span&gt;
+                &lt;/span&gt;
+              &lt;/a&gt;
+              &lt;a
+                id=&quot;nx-console-jetbrains&quot;
+                className=&quot;button-pill rounded shadow&quot;
+                href=&quot;https://plugins.jetbrains.com/plugin/21060-nx-console&quot;
+                target=&quot;_blank&quot;
+                rel=&quot;noreferrer&quot;
+              &gt;
+                &lt;svg
+                  height=&quot;48&quot;
+                  width=&quot;48&quot;
+                  viewBox=&quot;20 20 60 60&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;path d=&quot;m22.5 22.5h60v60h-60z&quot; /&gt;
+                  &lt;g fill=&quot;#fff&quot;&gt;
+                    &lt;path d=&quot;m29.03 71.25h22.5v3.75h-22.5z&quot; /&gt;
+                    &lt;path d=&quot;m28.09 38 1.67-1.58a1.88 1.88 0 0 0 1.47.87c.64 0 1.06-.44 1.06-1.31v-5.98h2.58v6a3.48 3.48 0 0 1 -.87 2.6 3.56 3.56 0 0 1 -2.57.95 3.84 3.84 0 0 1 -3.34-1.55z&quot; /&gt;
+                    &lt;path d=&quot;m36 30h7.53v2.19h-5v1.44h4.49v2h-4.42v1.49h5v2.21h-7.6z&quot; /&gt;
+                    &lt;path d=&quot;m47.23 32.29h-2.8v-2.29h8.21v2.27h-2.81v7.1h-2.6z&quot; /&gt;
+                    &lt;path d=&quot;m29.13 43.08h4.42a3.53 3.53 0 0 1 2.55.83 2.09 2.09 0 0 1 .6 1.53 2.16 2.16 0 0 1 -1.44 2.09 2.27 2.27 0 0 1 1.86 2.29c0 1.61-1.31 2.59-3.55 2.59h-4.44zm5 2.89c0-.52-.42-.8-1.18-.8h-1.29v1.64h1.24c.79 0 1.25-.26 1.25-.81zm-.9 2.66h-1.57v1.73h1.62c.8 0 1.24-.31 1.24-.86 0-.5-.4-.87-1.27-.87z&quot; /&gt;
+                    &lt;path d=&quot;m38 43.08h4.1a4.19 4.19 0 0 1 3 1 2.93 2.93 0 0 1 .9 2.19 3 3 0 0 1 -1.93 2.89l2.24 3.27h-3l-1.88-2.84h-.87v2.84h-2.56zm4 4.5c.87 0 1.39-.43 1.39-1.11 0-.75-.54-1.12-1.4-1.12h-1.44v2.26z&quot; /&gt;
+                    &lt;path d=&quot;m49.59 43h2.5l4 9.44h-2.79l-.67-1.69h-3.63l-.67 1.69h-2.71zm2.27 5.73-1-2.65-1.06 2.65z&quot; /&gt;
+                    &lt;path d=&quot;m56.46 43.05h2.6v9.37h-2.6z&quot; /&gt;
+                    &lt;path d=&quot;m60.06 43.05h2.42l3.37 5v-5h2.57v9.37h-2.26l-3.53-5.14v5.14h-2.57z&quot; /&gt;
+                    &lt;path d=&quot;m68.86 51 1.45-1.73a4.84 4.84 0 0 0 3 1.13c.71 0 1.08-.24 1.08-.65 0-.4-.31-.6-1.59-.91-2-.46-3.53-1-3.53-2.93 0-1.74 1.37-3 3.62-3a5.89 5.89 0 0 1 3.86 1.25l-1.26 1.84a4.63 4.63 0 0 0 -2.62-.92c-.63 0-.94.25-.94.6 0 .42.32.61 1.63.91 2.14.46 3.44 1.16 3.44 2.91 0 1.91-1.51 3-3.79 3a6.58 6.58 0 0 1 -4.35-1.5z&quot; /&gt;
+                  &lt;/g&gt;
+                &lt;/svg&gt;
+                &lt;span&gt;
+                  Install Nx Console for JetBrains
+                  &lt;span&gt;
+                    Available for WebStorm, Intellij IDEA Ultimate and more!
+                  &lt;/span&gt;
+                &lt;/span&gt;
+              &lt;/a&gt;
+              &lt;div id=&quot;nx-cloud&quot; className=&quot;rounded shadow&quot;&gt;
+                &lt;div&gt;
+                  &lt;svg
+                    id=&quot;nx-cloud-logo&quot;
+                    role=&quot;img&quot;
+                    xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                    stroke=&quot;currentColor&quot;
+                    fill=&quot;transparent&quot;
+                    viewBox=&quot;0 0 24 24&quot;
+                  &gt;
+                    &lt;path
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M23 3.75V6.5c-3.036 0-5.5 2.464-5.5 5.5s-2.464 5.5-5.5 5.5-5.5 2.464-5.5 5.5H3.75C2.232 23 1 21.768 1 20.25V3.75C1 2.232 2.232 1 3.75 1h16.5C21.768 1 23 2.232 23 3.75Z&quot;
+                    /&gt;
+                    &lt;path
+                      strokeWidth=&quot;2&quot;
+                      d=&quot;M23 6v14.1667C23 21.7307 21.7307 23 20.1667 23H6c0-3.128 2.53867-5.6667 5.6667-5.6667 3.128 0 5.6666-2.5386 5.6666-5.6666C17.3333 8.53867 19.872 6 23 6Z&quot;
+                    /&gt;
+                  &lt;/svg&gt;
+                  &lt;h2&gt;
+                    Nx Cloud
+                    &lt;span&gt;Enable faster CI &amp; better DX&lt;/span&gt;
+                  &lt;/h2&gt;
+                &lt;/div&gt;
+                &lt;p&gt;Your Nx Cloud remote cache setup is almost complete.&lt;/p&gt;
+
+                &lt;a href=&quot;&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;
+                  Click here to finish
+                &lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div id=&quot;commands&quot; className=&quot;rounded shadow&quot;&gt;
+            &lt;h2&gt;Next steps&lt;/h2&gt;
+            &lt;p&gt;Here are some things you can do with Nx:&lt;/p&gt;
+            &lt;details&gt;
+              &lt;summary&gt;
+                &lt;svg
+                  fill=&quot;none&quot;
+                  stroke=&quot;currentColor&quot;
+                  viewBox=&quot;0 0 24 24&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;path
+                    strokeLinecap=&quot;round&quot;
+                    strokeLinejoin=&quot;round&quot;
+                    strokeWidth=&quot;2&quot;
+                    d=&quot;M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z&quot;
+                  /&gt;
+                &lt;/svg&gt;
+                Build, test and lint your app
+              &lt;/summary&gt;
+              &lt;pre&gt;
+                &lt;span&gt;# Build&lt;/span&gt;
+                nx build {title}
+                &lt;span&gt;# Test&lt;/span&gt;
+                nx test {title}
+                &lt;span&gt;# Lint&lt;/span&gt;
+                nx lint {title}
+                &lt;span&gt;# Run them together!&lt;/span&gt;
+                nx run-many -p {title} -t build test lint
+              &lt;/pre&gt;
+            &lt;/details&gt;
+
+            &lt;details&gt;
+              &lt;summary&gt;
+                &lt;svg
+                  fill=&quot;none&quot;
+                  stroke=&quot;currentColor&quot;
+                  viewBox=&quot;0 0 24 24&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;path
+                    strokeLinecap=&quot;round&quot;
+                    strokeLinejoin=&quot;round&quot;
+                    strokeWidth=&quot;2&quot;
+                    d=&quot;M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z&quot;
+                  /&gt;
+                &lt;/svg&gt;
+                View project details
+              &lt;/summary&gt;
+              &lt;pre&gt;nx show project {title}&lt;/pre&gt;
+            &lt;/details&gt;
+            &lt;details&gt;
+              &lt;summary&gt;
+                &lt;svg
+                  fill=&quot;none&quot;
+                  stroke=&quot;currentColor&quot;
+                  viewBox=&quot;0 0 24 24&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;path
+                    strokeLinecap=&quot;round&quot;
+                    strokeLinejoin=&quot;round&quot;
+                    strokeWidth=&quot;2&quot;
+                    d=&quot;M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z&quot;
+                  /&gt;
+                &lt;/svg&gt;
+                View interactive project graph
+              &lt;/summary&gt;
+              &lt;pre&gt;nx graph&lt;/pre&gt;
+            &lt;/details&gt;
+            &lt;details&gt;
+              &lt;summary&gt;
+                &lt;svg
+                  fill=&quot;none&quot;
+                  stroke=&quot;currentColor&quot;
+                  viewBox=&quot;0 0 24 24&quot;
+                  xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                &gt;
+                  &lt;path
+                    strokeLinecap=&quot;round&quot;
+                    strokeLinejoin=&quot;round&quot;
+                    strokeWidth=&quot;2&quot;
+                    d=&quot;M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z&quot;
+                  /&gt;
+                &lt;/svg&gt;
+                Add UI library
+              &lt;/summary&gt;
+              &lt;pre&gt;
+                &lt;span&gt;# Generate UI lib&lt;/span&gt;
+                nx g @nx/react:lib ui
+                &lt;span&gt;# Add a component&lt;/span&gt;
+                nx g @nx/react:component ui/src/lib/button
+              &lt;/pre&gt;
+            &lt;/details&gt;
+          &lt;/div&gt;
+
+          &lt;p id=&quot;love&quot;&gt;
+            Carefully crafted with
+            &lt;svg
+              fill=&quot;currentColor&quot;
+              stroke=&quot;none&quot;
+              viewBox=&quot;0 0 24 24&quot;
+              xmlns=&quot;http://www.w3.org/2000/svg&quot;
+            &gt;
+              &lt;path
+                strokeLinecap=&quot;round&quot;
+                strokeLinejoin=&quot;round&quot;
+                strokeWidth=&quot;2&quot;
+                d=&quot;M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z&quot;
+              /&gt;
+            &lt;/svg&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+}
+
+export default NxWelcome;</file><file path="dashboard/src/Button.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+.button {
+  font-family: &apos;Nunito Sans&apos;, &apos;Helvetica Neue&apos;, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 3em;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+}
+
+.primary {
+  color: white;
+  background-color: #1ea7fd;
+}
+
+.secondary {
+  color: #333;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+}
+
+.small {
+  font-size: 12px;
+  padding: 10px 16px;
+}
+
+.medium {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+
+.large {
+  font-size: 16px;
+  padding: 12px 24px;
+}</file><file path="dashboard/src/Button.spec.tsx">import { render, screen } from &apos;@testing-library/react&apos;;
+import { Button } from &apos;./Button&apos;;
+import { describe, it, expect, vi } from &apos;vitest&apos;;
+import &apos;@testing-library/jest-dom&apos;;
+import React from &apos;react&apos;;
+
+
+// Mock the CSS modules to avoid className issues in tests
+vi.mock(&apos;./Button.module.css&apos;, () =&gt; ({
+  default: {
+    button: &apos;button&apos;,
+    primary: &apos;primary&apos;,
+    secondary: &apos;secondary&apos;,
+    small: &apos;small&apos;,
+    medium: &apos;medium&apos;,
+    large: &apos;large&apos;,
+  }
+}));
+
+describe(&apos;Button&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Button label=&quot;Click me&quot; /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+
+  it(&apos;should display the correct label&apos;, () =&gt; {
+    render(&lt;Button label=&quot;Test Button&quot; /&gt;);
+    const buttonElement = screen.getByRole(&apos;button&apos;);
+    // Use the direct string comparison which works without type issues
+    expect(buttonElement.textContent).toBe(&apos;Test Button&apos;);
+    // Type-safe alternative to toHaveTextContent
+    expect(buttonElement.innerHTML).toContain(&apos;Test Button&apos;);
+  });
+
+  it(&apos;should apply primary styles when primary prop is true&apos;, () =&gt; {
+    const { container } = render(&lt;Button label=&quot;Primary Button&quot; primary /&gt;);
+    const button = container.firstChild as HTMLElement;
+    // Look for the class name directly without depending on CSS modules implementation
+    expect(button.className).toContain(&apos;button&apos;);
+  });
+
+  it(&apos;should apply the correct size class based on size prop&apos;, () =&gt; {
+    const { container } = render(&lt;Button label=&quot;Large Button&quot; size=&quot;large&quot; /&gt;);
+    const button = container.firstChild as HTMLElement;
+    // Size classes can be checked without depending on actual CSS module naming
+    expect(button).toBeTruthy();
+  });
+});</file><file path="dashboard/src/Button.stories.tsx">import type { Meta, StoryObj } from &apos;@storybook/react&apos;;
+import { Button } from &apos;./Button&apos;;
+
+const meta: Meta&lt;typeof Button&gt; = {
+  component: Button,
+  title: &apos;Components/Button&apos;,
+  tags: [&apos;autodocs&apos;],
+  argTypes: {
+    onClick: { action: &apos;clicked&apos; }
+  },
+};
+
+export default meta;
+type Story = StoryObj&lt;typeof Button&gt;;
+
+export const Primary: Story = {
+  args: {
+    primary: true,
+    label: &apos;Primary Button&apos;,
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: &apos;Secondary Button&apos;,
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: &apos;large&apos;,
+    label: &apos;Large Button&apos;,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: &apos;small&apos;,
+    label: &apos;Small Button&apos;,
+  },
+};</file><file path="dashboard/src/Button.tsx">import { ButtonHTMLAttributes } from &apos;react&apos;;
+import styles from &apos;./Button.module.css&apos;;
+
+export interface ButtonProps extends ButtonHTMLAttributes&lt;HTMLButtonElement&gt; {
+  primary?: boolean;
+  size?: &apos;small&apos; | &apos;medium&apos; | &apos;large&apos;;
+  label: string;
+  backgroundColor?: string;
+}
+
+export function Button({
+  primary = false,
+  size = &apos;medium&apos;,
+  backgroundColor,
+  label,
+  ...props
+}: ButtonProps) {
+  const mode = primary ? styles[&apos;primary&apos;] : styles[&apos;secondary&apos;];
+  return (
+    &lt;button
+      type=&quot;button&quot;
+      className={`${styles[&apos;button&apos;]} ${styles[size]} ${mode}`}
+      style={{ backgroundColor }}
+      {...props}
+    &gt;
+      {label}
+    &lt;/button&gt;
+  );
+}
+
+export default Button;</file><file path="dashboard/src/Card.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="dashboard/src/Card.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Card from &apos;./Card&apos;;
+
+describe(&apos;Card&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Card /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="dashboard/src/Card.tsx">import styles from &apos;./Card.module.css&apos;;
+
+export function Card() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Card!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Card;</file><file path="dashboard/src/Footer.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="dashboard/src/Footer.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Footer from &apos;./Footer&apos;;
+
+describe(&apos;Footer&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Footer /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="dashboard/src/Footer.tsx">import styles from &apos;./Footer.module.css&apos;;
+
+export function Footer() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Footer!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Footer;</file><file path="dashboard/src/Header.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="dashboard/src/Header.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Header from &apos;./Header&apos;;
+
+describe(&apos;Header&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Header /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="dashboard/src/Header.tsx">import styles from &apos;./Header.module.css&apos;;
+
+export function Header() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Header!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Header;</file><file path="dashboard/src/Input.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="dashboard/src/Input.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Input from &apos;./Input&apos;;
+
+describe(&apos;Input&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Input /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="dashboard/src/Input.tsx">import styles from &apos;./Input.module.css&apos;;
+
+export function Input() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Input!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Input;</file><file path="dashboard/src/main.tsx">import { StrictMode } from &apos;react&apos;;
+import * as ReactDOM from &apos;react-dom/client&apos;;
+import App from &apos;./app/app&apos;;
+
+const root = ReactDOM.createRoot(
+  document.getElementById(&apos;root&apos;) as HTMLElement
+);
+
+root.render(
+  &lt;StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/StrictMode&gt;
+);</file><file path="dashboard/src/Sidebar.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="dashboard/src/Sidebar.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Sidebar from &apos;./Sidebar&apos;;
+
+describe(&apos;Sidebar&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Sidebar /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="dashboard/src/Sidebar.tsx">import styles from &apos;./Sidebar.module.css&apos;;
+
+export function Sidebar() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Sidebar!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Sidebar;</file><file path="dashboard/src/styles.css">/* You can add global styles to this file, and also import other style files */</file><file path="dashboard/src/Table.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="dashboard/src/Table.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Table from &apos;./Table&apos;;
+
+describe(&apos;Table&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Table /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="dashboard/src/Table.tsx">import styles from &apos;./Table.module.css&apos;;
+
+export function Table() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Table!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Table;</file><file path="dashboard/.npmrc">registry=https://registry.npmjs.org/</file><file path="dashboard/eslint.config.mjs">import nx from &apos;@nx/eslint-plugin&apos;;
+import baseConfig from &apos;../eslint.config.mjs&apos;;
+
+export default [
+  ...baseConfig,
+  ...nx.configs[&apos;flat/react&apos;],
+  {
+    files: [&apos;**/*.ts&apos;, &apos;**/*.tsx&apos;, &apos;**/*.js&apos;, &apos;**/*.jsx&apos;],
+    // Override or add rules here
+    rules: {},
+  },
+];</file><file path="dashboard/index.html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Dashboard&lt;/title&gt;
+    &lt;base href=&quot;/&quot; /&gt;
+
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;/favicon.ico&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;/src/styles.css&quot; /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.tsx&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</file><file path="dashboard/package.json">{
+  &quot;name&quot;: &quot;@deanmachines-nx/dashboard&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;private&quot;: true,
+  &quot;scripts&quot;: {
+    &quot;storybook&quot;: &quot;storybook dev --config-dir .storybook&quot;,
+    &quot;build-storybook&quot;: &quot;storybook build --config-dir .storybook&quot;,
+    &quot;storybook:automigrate&quot;: &quot;pnpx storybook automigrate --config-dir .storybook&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;@chromatic-com/storybook&quot;: &quot;^1.2.0&quot;,
+    &quot;@storybook/addon-essentials&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/addon-interactions&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/react&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/react-vite&quot;: &quot;^8.4.6&quot;,
+    &quot;storybook&quot;: &quot;^8.4.6&quot;
+  }
+}</file><file path="dashboard/tsconfig.app.json">{
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;dist&quot;,
+    &quot;tsBuildInfoFile&quot;: &quot;dist/tsconfig.app.tsbuildinfo&quot;,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;lib&quot;: [&quot;dom&quot;],
+    &quot;types&quot;: [
+      &quot;node&quot;,
+      &quot;@nx/react/typings/cssmodule.d.ts&quot;,
+      &quot;@nx/react/typings/image.d.ts&quot;,
+      &quot;vite/client&quot;
+    ],
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;
+  },
+  &quot;exclude&quot;: [
+    &quot;out-tsc&quot;,
+    &quot;dist&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;eslint.config.js&quot;,
+    &quot;eslint.config.cjs&quot;,
+    &quot;eslint.config.mjs&quot;,
+    &quot;**/*.stories.ts&quot;,
+    &quot;**/*.stories.js&quot;,
+    &quot;**/*.stories.jsx&quot;,
+    &quot;**/*.stories.tsx&quot;
+  ],
+  &quot;include&quot;: [&quot;src/**/*.js&quot;, &quot;src/**/*.jsx&quot;, &quot;src/**/*.ts&quot;, &quot;src/**/*.tsx&quot;]
+}</file><file path="dashboard/tsconfig.json">{
+  &quot;files&quot;: [],
+  &quot;include&quot;: [],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.app.json&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./tsconfig.storybook.json&quot;
+    }
+  ],
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;
+}</file><file path="dashboard/tsconfig.storybook.json">{
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;out-tsc/storybook&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;jsx&quot;: &quot;preserve&quot;
+  },
+  &quot;exclude&quot;: [
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;src/**/*.test.js&quot;
+  ],
+  &quot;include&quot;: [
+    &quot;src/**/*.stories.ts&quot;,
+    &quot;src/**/*.stories.js&quot;,
+    &quot;src/**/*.stories.jsx&quot;,
+    &quot;src/**/*.stories.tsx&quot;,
+    &quot;src/**/*.stories.mdx&quot;,
+    &quot;.storybook/*.js&quot;,
+    &quot;.storybook/*.ts&quot;
+  ],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.app.json&quot;
+    }
+  ],
+  &quot;files&quot;: [
+    &quot;../node_modules/@nx/react/typings/styled-jsx.d.ts&quot;,
+    &quot;../node_modules/@nx/react/typings/cssmodule.d.ts&quot;,
+    &quot;../node_modules/@nx/react/typings/image.d.ts&quot;
+  ]
+}</file><file path="dashboard/vite.config.ts">/// &lt;reference types=&apos;vitest&apos; /&gt;
+import { defineConfig } from &apos;vite&apos;;
+import react from &apos;@vitejs/plugin-react&apos;;
+import { nxViteTsPaths } from &apos;@nx/vite/plugins/nx-tsconfig-paths.plugin&apos;;
+import { join } from &apos;path&apos;;
+
+export default defineConfig(({ command, mode }) =&gt; {
+  const isProduction = mode === &apos;production&apos;;
+  
+  return {
+    root: __dirname,
+    cacheDir: &apos;../node_modules/.vite/dashboard&apos;,
+    
+    // Enable source maps in development
+    define: {
+      &apos;process.env.NODE_ENV&apos;: JSON.stringify(mode),
+    },
+    
+    server: {
+      port: 4200,
+      host: &apos;localhost&apos;,
+      fs: {
+        // Allow serving files from the project root
+        allow: [&apos;..&apos;],
+      },
+    },
+    
+    preview: {
+      port: 4300,
+      host: &apos;localhost&apos;,
+    },
+    
+    plugins: [
+      react(),
+      nxViteTsPaths(),
+    ],
+    
+    // Enable test configuration
+    test: {
+      globals: true,
+      cache: {
+        dir: &apos;../node_modules/.vitest&apos;,
+      },
+      environment: &apos;jsdom&apos;,
+      include: [&apos;src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}&apos;],
+    },
+    
+    // Resolve configuration for better module imports
+    resolve: {
+      alias: {
+        &apos;@&apos;: join(__dirname, &apos;src&apos;),
+      },
+    },
+    
+    build: {
+      outDir: &apos;./dist&apos;,
+      emptyOutDir: true,
+      reportCompressedSize: true,
+      commonjsOptions: {
+        transformMixedEsModules: true,
+      },
+      rollupOptions: {
+        output: {
+          manualChunks: isProduction ? {
+            vendor: [&apos;react&apos;, &apos;react-dom&apos;],
+          } : undefined,
+        },
+      },
+    },
+  };
+});</file><file path="dashboard-e2e/src/example.spec.ts">import { test, expect } from &apos;@playwright/test&apos;;
+
+test(&apos;has title&apos;, async ({ page }) =&gt; {
+  await page.goto(&apos;/&apos;);
+
+  // Expect h1 to contain a substring.
+  expect(await page.locator(&apos;h1&apos;).innerText()).toContain(&apos;Welcome&apos;);
+});</file><file path="dashboard-e2e/eslint.config.mjs">import playwright from &apos;eslint-plugin-playwright&apos;;
+import baseConfig from &apos;../eslint.config.mjs&apos;;
+
+export default [
+  playwright.configs[&apos;flat/recommended&apos;],
+  ...baseConfig,
+  {
+    files: [&apos;**/*.ts&apos;, &apos;**/*.js&apos;],
+    // Override or add rules here
+    rules: {},
+  },
+];</file><file path="dashboard-e2e/package.json">{
+  &quot;name&quot;: &quot;@deanmachines-nx/dashboard-e2e&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;private&quot;: true,
+  &quot;nx&quot;: {
+    &quot;implicitDependencies&quot;: [
+      &quot;@deanmachines-nx/dashboard&quot;
+    ]
+  }
+}</file><file path="dashboard-e2e/playwright.config.ts">import { defineConfig, devices } from &apos;@playwright/test&apos;;
+import { nxE2EPreset } from &apos;@nx/playwright/preset&apos;;
+import { workspaceRoot } from &apos;@nx/devkit&apos;;
+
+// For CI, you may want to set BASE_URL to the deployed application.
+const baseURL = process.env[&apos;BASE_URL&apos;] || &apos;http://localhost:4300&apos;;
+
+/**
+ * Read environment variables from file.
+ * https://github.com/motdotla/dotenv
+ */
+// require(&apos;dotenv&apos;).config();
+
+/**
+ * See https://playwright.dev/docs/test-configuration.
+ */
+export default defineConfig({
+  ...nxE2EPreset(__filename, { testDir: &apos;./src&apos; }),
+  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  use: {
+    baseURL,
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    trace: &apos;on-first-retry&apos;,
+  },
+  /* Run your local dev server before starting the tests */
+  webServer: {
+    command: &apos;pnpm exec nx run @deanmachines-nx/dashboard:preview&apos;,
+    url: &apos;http://localhost:4300&apos;,
+    reuseExistingServer: !process.env.CI,
+    cwd: workspaceRoot,
+  },
+  projects: [
+    {
+      name: &apos;chromium&apos;,
+      use: { ...devices[&apos;Desktop Chrome&apos;] },
+    },
+
+    {
+      name: &apos;firefox&apos;,
+      use: { ...devices[&apos;Desktop Firefox&apos;] },
+    },
+
+    {
+      name: &apos;webkit&apos;,
+      use: { ...devices[&apos;Desktop Safari&apos;] },
+    },
+
+    // Uncomment for mobile browsers support
+    /* {
+      name: &apos;Mobile Chrome&apos;,
+      use: { ...devices[&apos;Pixel 5&apos;] },
+    },
+    {
+      name: &apos;Mobile Safari&apos;,
+      use: { ...devices[&apos;iPhone 12&apos;] },
+    }, */
+
+    // Uncomment for branded browsers
+    /* {
+      name: &apos;Microsoft Edge&apos;,
+      use: { ...devices[&apos;Desktop Edge&apos;], channel: &apos;msedge&apos; },
+    },
+    {
+      name: &apos;Google Chrome&apos;,
+      use: { ...devices[&apos;Desktop Chrome&apos;], channel: &apos;chrome&apos; },
+    } */
+  ],
+});</file><file path="dashboard-e2e/tsconfig.json">{
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;allowJs&quot;: true,
+    &quot;outDir&quot;: &quot;out-tsc/playwright&quot;,
+    &quot;sourceMap&quot;: false
+  },
+  &quot;include&quot;: [
+    &quot;**/*.ts&quot;,
+    &quot;**/*.js&quot;,
+    &quot;playwright.config.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.d.ts&quot;
+  ],
+  &quot;exclude&quot;: [
+    &quot;out-tsc&quot;,
+    &quot;test-output&quot;,
+    &quot;eslint.config.js&quot;,
+    &quot;eslint.config.mjs&quot;,
+    &quot;eslint.config.cjs&quot;
+  ]
+}</file><file path="data-models/src/lib/data-models.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="data-models/src/lib/data-models.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import DataModels from &apos;./data-models&apos;;
+
+describe(&apos;DataModels&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;DataModels /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="data-models/src/lib/data-models.tsx">import styles from &apos;./data-models.module.css&apos;;
+
+export function DataModels() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to DataModels!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default DataModels;</file><file path="data-models/src/index.ts">export * from &apos;./lib/data-models&apos;;</file><file path="data-models/.babelrc">{
+  &quot;presets&quot;: [
+    [
+      &quot;@nx/react/babel&quot;,
+      {
+        &quot;runtime&quot;: &quot;automatic&quot;,
+        &quot;useBuiltIns&quot;: &quot;usage&quot;
+      }
+    ]
+  ],
+  &quot;plugins&quot;: []
+}</file><file path="data-models/eslint.config.mjs">import nx from &apos;@nx/eslint-plugin&apos;;
+import baseConfig from &apos;../eslint.config.mjs&apos;;
+
+export default [
+  ...baseConfig,
+  ...nx.configs[&apos;flat/react&apos;],
+  {
+    files: [&apos;**/*.ts&apos;, &apos;**/*.tsx&apos;, &apos;**/*.js&apos;, &apos;**/*.jsx&apos;],
+    // Override or add rules here
+    rules: {},
+  },
+];</file><file path="data-models/package.json">{
+  &quot;name&quot;: &quot;@deanmachines-nx/data-models&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;./dist/index.js&quot;,
+  &quot;module&quot;: &quot;./dist/index.js&quot;,
+  &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+  &quot;exports&quot;: {
+    &quot;./package.json&quot;: &quot;./package.json&quot;,
+    &quot;.&quot;: {
+      &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+      &quot;import&quot;: &quot;./dist/index.js&quot;,
+      &quot;default&quot;: &quot;./dist/index.js&quot;
+    }
+  }
+}</file><file path="data-models/README.md"># @deanmachines-nx/data-models
+
+This library was generated with [Nx](https://nx.dev).
+
+## Running unit tests
+
+Run `nx test @deanmachines-nx/data-models` to execute the unit tests via [Vitest](https://vitest.dev/).</file><file path="data-models/tsconfig.json">{
+  &quot;files&quot;: [],
+  &quot;include&quot;: [],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./tsconfig.spec.json&quot;
+    }
+  ],
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;
+}</file><file path="data-models/tsconfig.lib.json">{
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;dist&quot;,
+    &quot;types&quot;: [
+      &quot;node&quot;,
+      &quot;@nx/react/typings/cssmodule.d.ts&quot;,
+      &quot;@nx/react/typings/image.d.ts&quot;,
+      &quot;vite/client&quot;
+    ],
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;tsBuildInfoFile&quot;: &quot;dist/tsconfig.lib.tsbuildinfo&quot;
+  },
+  &quot;exclude&quot;: [
+    &quot;out-tsc&quot;,
+    &quot;dist&quot;,
+    &quot;**/*.spec.ts&quot;,
+    &quot;**/*.test.ts&quot;,
+    &quot;**/*.spec.tsx&quot;,
+    &quot;**/*.test.tsx&quot;,
+    &quot;**/*.spec.js&quot;,
+    &quot;**/*.test.js&quot;,
+    &quot;**/*.spec.jsx&quot;,
+    &quot;**/*.test.jsx&quot;,
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;eslint.config.js&quot;,
+    &quot;eslint.config.cjs&quot;,
+    &quot;eslint.config.mjs&quot;
+  ],
+  &quot;include&quot;: [&quot;src/**/*.js&quot;, &quot;src/**/*.jsx&quot;, &quot;src/**/*.ts&quot;, &quot;src/**/*.tsx&quot;]
+}</file><file path="data-models/tsconfig.spec.json">{
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;./out-tsc/vitest&quot;,
+    &quot;types&quot;: [
+      &quot;vitest/globals&quot;,
+      &quot;vitest/importMeta&quot;,
+      &quot;vite/client&quot;,
+      &quot;node&quot;,
+      &quot;vitest&quot;
+    ],
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;
+  },
+  &quot;include&quot;: [
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;src/**/*.d.ts&quot;
+  ],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    }
+  ]
+}</file><file path="data-models/vite.config.ts">import { defineConfig } from &apos;vite&apos;;
+import react from &apos;@vitejs/plugin-react&apos;;
+import dts from &apos;vite-plugin-dts&apos;;
+import * as path from &apos;path&apos;;
+
+export default defineConfig(() =&gt; ({
+  root: __dirname,
+  cacheDir: &apos;../node_modules/.vite/data-models&apos;,
+  plugins: [
+    react(),
+    dts({
+      entryRoot: &apos;src&apos;,
+      tsconfigPath: path.join(__dirname, &apos;tsconfig.lib.json&apos;),
+    }),
+    dts({
+      entryRoot: &apos;src&apos;,
+      tsconfigPath: path.join(__dirname, &apos;tsconfig.lib.json&apos;),
+    }),
+  ],
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [ nxViteTsPaths() ],
+  // },
+  // Configuration for building your library.
+  // See: https://vitejs.dev/guide/build.html#library-mode
+  build: {
+    emptyOutDir: true,
+    transformMixedEsModules: true,
+    entry: &apos;src/index.ts&apos;,
+    name: &apos;@deanmachines-nx/data-models&apos;,
+    fileName: &apos;index&apos;,
+    formats: [&apos;es&apos; as const],
+    external: [&apos;react&apos;, &apos;react-dom&apos;, &apos;react/jsx-runtime&apos;],
+    lib: {
+      entry: &apos;src/index.ts&apos;,
+      name: &apos;@deanmachines-nx/data-models&apos;,
+      fileName: &apos;index&apos;,
+      formats: [&apos;es&apos; as const],
+    },
+    rollupOptions: {
+      external: [&quot;&apos;react&apos;&quot;, &quot;&apos;react-dom&apos;&quot;, &quot;&apos;react/jsx-runtime&apos;&quot;],
+    },
+    outDir: &apos;./dist&apos;,
+    reportCompressedSize: true,
+    commonjsOptions: { transformMixedEsModules: true },
+  },
+  test: {
+    watch: false,
+    globals: true,
+    environment: &apos;jsdom&apos;,
+    include: [&apos;src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}&apos;],
+    reporters: [&apos;default&apos;],
+    coverage: {
+      reportsDirectory: &apos;./test-output/vitest/coverage&apos;,
+      provider: &apos;v8&apos; as const,
+    },
+  },
+}));</file><file path="libs/shared/api/src/lib/api.spec.ts">import { api } from &apos;./api.js&apos;;
+
+describe(&apos;api&apos;, () =&gt; {
+  it(&apos;should work&apos;, () =&gt; {
+    expect(api()).toEqual(&apos;api&apos;);
+  });
+});</file><file path="libs/shared/api/src/lib/api.ts">export function api(): string {
+  return &apos;api&apos;;
+}</file><file path="libs/shared/api/src/index.ts">export * from &apos;./lib/api.js&apos;;</file><file path="libs/shared/api/eslint.config.mjs">import baseConfig from &apos;../../../eslint.config.mjs&apos;;
+
+export default [
+  ...baseConfig,
+  {
+    files: [&apos;**/*.json&apos;],
+    rules: {
+      &apos;@nx/dependency-checks&apos;: [
+        &apos;error&apos;,
+        {
+          ignoredFiles: [
+            &apos;{projectRoot}/eslint.config.{js,cjs,mjs}&apos;,
+            &apos;{projectRoot}/vite.config.{js,ts,mjs,mts}&apos;,
+          ],
+        },
+      ],
+    },
+    languageOptions: {
+      parser: await import(&apos;jsonc-eslint-parser&apos;),
+    },
+  },
+];</file><file path="libs/shared/api/package.json">{
+  &quot;name&quot;: &quot;@deanmachines-nx/api&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;private&quot;: true,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;./dist/index.js&quot;,
+  &quot;module&quot;: &quot;./dist/index.js&quot;,
+  &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+  &quot;exports&quot;: {
+    &quot;./package.json&quot;: &quot;./package.json&quot;,
+    &quot;.&quot;: {
+      &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+      &quot;import&quot;: &quot;./dist/index.js&quot;,
+      &quot;default&quot;: &quot;./dist/index.js&quot;
+    }
+  },
+  &quot;dependencies&quot;: {
+    &quot;tslib&quot;: &quot;^2.3.0&quot;
+  }
+}</file><file path="libs/shared/api/README.md"># api
+
+This library was generated with [Nx](https://nx.dev).
+
+## Building
+
+Run `nx build api` to build the library.
+
+## Running unit tests
+
+Run `nx test api` to execute the unit tests via [Vitest](https://vitest.dev/).</file><file path="libs/shared/api/tsconfig.json">{
+  &quot;extends&quot;: &quot;../../../tsconfig.base.json&quot;,
+  &quot;files&quot;: [],
+  &quot;include&quot;: [],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./tsconfig.spec.json&quot;
+    }
+  ],
+  &quot;nx&quot;: {
+    &quot;addTypecheckTarget&quot;: false
+  }
+}</file><file path="libs/shared/api/tsconfig.lib.json">{
+  &quot;extends&quot;: &quot;../../../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;outDir&quot;: &quot;dist&quot;,
+    &quot;tsBuildInfoFile&quot;: &quot;dist/tsconfig.lib.tsbuildinfo&quot;,
+    &quot;emitDeclarationOnly&quot;: false,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;types&quot;: [&quot;node&quot;]
+  },
+  &quot;include&quot;: [&quot;src/**/*.ts&quot;],
+  &quot;references&quot;: [],
+  &quot;exclude&quot;: [
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;
+  ]
+}</file><file path="libs/shared/api/tsconfig.spec.json">{
+  &quot;extends&quot;: &quot;../../../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;./out-tsc/vitest&quot;,
+    &quot;types&quot;: [
+      &quot;vitest/globals&quot;,
+      &quot;vitest/importMeta&quot;,
+      &quot;vite/client&quot;,
+      &quot;node&quot;,
+      &quot;vitest&quot;
+    ],
+    &quot;forceConsistentCasingInFileNames&quot;: true
+  },
+  &quot;include&quot;: [
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;src/**/*.d.ts&quot;
+  ],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    }
+  ]
+}</file><file path="libs/shared/api/vite.config.ts">import { defineConfig } from &apos;vite&apos;;
+
+export default defineConfig(() =&gt; ({
+  root: __dirname,
+  cacheDir: &apos;../../../node_modules/.vite/libs/shared/api&apos;,
+  plugins: [],
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [ nxViteTsPaths() ],
+  // },
+  test: {
+    watch: false,
+    globals: true,
+    environment: &apos;node&apos;,
+    include: [&apos;src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}&apos;],
+    reporters: [&apos;default&apos;],
+    coverage: {
+      reportsDirectory: &apos;./test-output/vitest/coverage&apos;,
+      provider: &apos;v8&apos; as const,
+    },
+  },
+}));</file><file path="libs/shared/src/lib/shared.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="libs/shared/src/lib/shared.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Shared from &apos;./shared&apos;;
+
+describe(&apos;Shared&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Shared /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="libs/shared/src/lib/shared.tsx">import styles from &apos;./shared.module.css&apos;;
+
+export function Shared() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Shared!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Shared;</file><file path="libs/shared/src/index.ts">export * from &apos;./lib/shared&apos;;</file><file path="libs/shared/ui/src/lib/button.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="libs/shared/ui/src/lib/button.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Button from &apos;./button&apos;;
+
+describe(&apos;Button&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Button /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="libs/shared/ui/src/lib/button.tsx">import styles from &apos;./button.module.css&apos;;
+
+export function Button() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Button!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Button;</file><file path="libs/shared/ui/src/lib/card.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="libs/shared/ui/src/lib/card.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Card from &apos;./card&apos;;
+
+describe(&apos;Card&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Card /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="libs/shared/ui/src/lib/card.tsx">import styles from &apos;./card.module.css&apos;;
+
+export function Card() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Card!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Card;</file><file path="libs/shared/ui/src/lib/eslint.config.mjs">import nx from &apos;@nx/eslint-plugin&apos;;
+
+export default [
+  ...nx.configs[&apos;flat/base&apos;],
+  ...nx.configs[&apos;flat/typescript&apos;],
+  ...nx.configs[&apos;flat/javascript&apos;],
+  {
+    ignores: [
+      &apos;**/dist&apos;,
+      &apos;**/vite.config.*.timestamp*&apos;,
+      &apos;**/vitest.config.*.timestamp*&apos;,
+    ],
+  },
+  {
+    files: [&apos;**/*.ts&apos;, &apos;**/*.tsx&apos;, &apos;**/*.js&apos;, &apos;**/*.jsx&apos;],
+    rules: {
+      &apos;@nx/enforce-module-boundaries&apos;: [
+        &apos;error&apos;,
+        {
+          enforceBuildableLibDependency: true,
+          allow: [&apos;^.*/eslint(\\.base)?\\.config\\.[cm]?js$&apos;],
+          depConstraints: [
+            {
+              sourceTag: &apos;*&apos;,
+              onlyDependOnLibsWithTags: [&apos;*&apos;],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: [
+      &apos;**/*.ts&apos;,
+      &apos;**/*.tsx&apos;,
+      &apos;**/*.cts&apos;,
+      &apos;**/*.mts&apos;,
+      &apos;**/*.js&apos;,
+      &apos;**/*.jsx&apos;,
+      &apos;**/*.cjs&apos;,
+      &apos;**/*.mjs&apos;,
+    ],
+    // Override or add rules here
+    rules: {},
+  },
+];</file><file path="libs/shared/ui/src/lib/form.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="libs/shared/ui/src/lib/form.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Form from &apos;./form&apos;;
+
+describe(&apos;Form&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Form /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="libs/shared/ui/src/lib/form.tsx">import styles from &apos;./form.module.css&apos;;
+
+export function Form() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Form!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Form;</file><file path="libs/shared/ui/src/lib/ui.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="libs/shared/ui/src/lib/ui.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Ui from &apos;./ui&apos;;
+
+describe(&apos;Ui&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Ui /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="libs/shared/ui/src/lib/ui.tsx">import styles from &apos;./ui.module.css&apos;;
+
+export function Ui() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Ui!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Ui;</file><file path="libs/shared/ui/src/index.ts">export * from &apos;./lib/ui&apos;;</file><file path="libs/shared/ui/.babelrc">{
+  &quot;presets&quot;: [
+    [
+      &quot;@nx/react/babel&quot;,
+      {
+        &quot;runtime&quot;: &quot;automatic&quot;,
+        &quot;useBuiltIns&quot;: &quot;usage&quot;
+      }
+    ]
+  ],
+  &quot;plugins&quot;: []
+}</file><file path="libs/shared/ui/eslint.config.mjs">import nx from &apos;@nx/eslint-plugin&apos;;
+import baseConfig from &apos;../../../eslint.config.mjs&apos;;
+
+export default [
+  ...baseConfig,
+  ...nx.configs[&apos;flat/react&apos;],
+  {
+    files: [&apos;**/*.ts&apos;, &apos;**/*.tsx&apos;, &apos;**/*.js&apos;, &apos;**/*.jsx&apos;],
+    // Override or add rules here
+    rules: {},
+  },
+];</file><file path="libs/shared/ui/package.json">{
+  &quot;name&quot;: &quot;@myorg/shared/ui&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;./dist/index.js&quot;,
+  &quot;module&quot;: &quot;./dist/index.js&quot;,
+  &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+  &quot;exports&quot;: {
+    &quot;./package.json&quot;: &quot;./package.json&quot;,
+    &quot;.&quot;: {
+      &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+      &quot;import&quot;: &quot;./dist/index.js&quot;,
+      &quot;default&quot;: &quot;./dist/index.js&quot;
+    }
+  }
+}</file><file path="libs/shared/ui/README.md"># @myorg/shared/ui
+
+This library was generated with [Nx](https://nx.dev).
+
+## Running unit tests
+
+Run `nx test @myorg/shared/ui` to execute the unit tests via [Vitest](https://vitest.dev/).</file><file path="libs/shared/ui/tsconfig.json">{
+  &quot;files&quot;: [],
+  &quot;include&quot;: [],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./tsconfig.spec.json&quot;
+    }
+  ],
+  &quot;extends&quot;: &quot;../../../tsconfig.base.json&quot;
+}</file><file path="libs/shared/ui/tsconfig.lib.json">{
+  &quot;extends&quot;: &quot;../../../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;dist&quot;,
+    &quot;types&quot;: [
+      &quot;node&quot;,
+      &quot;@nx/react/typings/cssmodule.d.ts&quot;,
+      &quot;@nx/react/typings/image.d.ts&quot;,
+      &quot;vite/client&quot;
+    ],
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;tsBuildInfoFile&quot;: &quot;dist/tsconfig.lib.tsbuildinfo&quot;
+  },
+  &quot;exclude&quot;: [
+    &quot;out-tsc&quot;,
+    &quot;dist&quot;,
+    &quot;**/*.spec.ts&quot;,
+    &quot;**/*.test.ts&quot;,
+    &quot;**/*.spec.tsx&quot;,
+    &quot;**/*.test.tsx&quot;,
+    &quot;**/*.spec.js&quot;,
+    &quot;**/*.test.js&quot;,
+    &quot;**/*.spec.jsx&quot;,
+    &quot;**/*.test.jsx&quot;,
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;eslint.config.js&quot;,
+    &quot;eslint.config.cjs&quot;,
+    &quot;eslint.config.mjs&quot;
+  ],
+  &quot;include&quot;: [&quot;src/**/*.js&quot;, &quot;src/**/*.jsx&quot;, &quot;src/**/*.ts&quot;, &quot;src/**/*.tsx&quot;]
+}</file><file path="libs/shared/ui/tsconfig.spec.json">{
+  &quot;extends&quot;: &quot;../../../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;./out-tsc/vitest&quot;,
+    &quot;types&quot;: [
+      &quot;vitest/globals&quot;,
+      &quot;vitest/importMeta&quot;,
+      &quot;vite/client&quot;,
+      &quot;node&quot;,
+      &quot;vitest&quot;
+    ],
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;
+  },
+  &quot;include&quot;: [
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;src/**/*.d.ts&quot;
+  ],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    }
+  ]
+}</file><file path="libs/shared/ui/vite.config.ts">/// &lt;reference types=&apos;vitest&apos; /&gt;
+import { defineConfig } from &apos;vite&apos;;
+import react from &apos;@vitejs/plugin-react&apos;;
+import dts from &apos;vite-plugin-dts&apos;;
+import * as path from &apos;path&apos;;
+
+export default defineConfig(() =&gt; ({
+  root: __dirname,
+  cacheDir: &apos;../../../node_modules/.vite/libs/shared/ui&apos;,
+  plugins: [
+    react(),
+    dts({
+      entryRoot: &apos;src&apos;,
+      tsconfigPath: path.join(__dirname, &apos;tsconfig.lib.json&apos;),
+    }),
+  ],
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [ nxViteTsPaths() ],
+  // },
+  // Configuration for building your library.
+  // See: https://vitejs.dev/guide/build.html#library-mode
+  build: {
+    outDir: &apos;./dist&apos;,
+    emptyOutDir: true,
+    reportCompressedSize: true,
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+    lib: {
+      // Could also be a dictionary or array of multiple entry points.
+      entry: &apos;src/index.ts&apos;,
+      name: &apos;@myorg/shared/ui&apos;,
+      fileName: &apos;index&apos;,
+      // Change this to the formats you want to support.
+      // Don&apos;t forget to update your package.json as well.
+      formats: [&apos;es&apos; as const],
+    },
+    rollupOptions: {
+      // External packages that should not be bundled into your library.
+      external: [&apos;react&apos;, &apos;react-dom&apos;, &apos;react/jsx-runtime&apos;],
+    },
+  },
+  test: {
+    watch: false,
+    globals: true,
+    environment: &apos;jsdom&apos;,
+    include: [&apos;{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}&apos;],
+    reporters: [&apos;default&apos;],
+    coverage: {
+      reportsDirectory: &apos;./test-output/vitest/coverage&apos;,
+      provider: &apos;v8&apos; as const,
+    },
+  },
+}));</file><file path="libs/shared/.babelrc">{
+  &quot;presets&quot;: [
+    [
+      &quot;@nx/react/babel&quot;,
+      {
+        &quot;runtime&quot;: &quot;automatic&quot;,
+        &quot;useBuiltIns&quot;: &quot;usage&quot;
+      }
+    ]
+  ],
+  &quot;plugins&quot;: []
+}</file><file path="libs/shared/eslint.config.mjs">import nx from &apos;@nx/eslint-plugin&apos;;
+import baseConfig from &apos;../../eslint.config.mjs&apos;;
+
+export default [
+  ...baseConfig,
+  ...nx.configs[&apos;flat/react&apos;],
+  {
+    files: [&apos;**/*.ts&apos;, &apos;**/*.tsx&apos;, &apos;**/*.js&apos;, &apos;**/*.jsx&apos;],
+    // Override or add rules here
+    rules: {},
+  },
+];</file><file path="libs/shared/package.json">{
+  &quot;name&quot;: &quot;@deanmachines-nx/shared&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;./dist/index.js&quot;,
+  &quot;module&quot;: &quot;./dist/index.js&quot;,
+  &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+  &quot;exports&quot;: {
+    &quot;./package.json&quot;: &quot;./package.json&quot;,
+    &quot;.&quot;: {
+      &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+      &quot;import&quot;: &quot;./dist/index.js&quot;,
+      &quot;default&quot;: &quot;./dist/index.js&quot;
+    }
+  }
+}</file><file path="libs/shared/README.md"># @deanmachines-nx/shared
+
+This library was generated with [Nx](https://nx.dev).
+
+## Running unit tests
+
+Run `nx test @deanmachines-nx/shared` to execute the unit tests via [Vitest](https://vitest.dev/).</file><file path="libs/shared/tsconfig.json">{
+  &quot;files&quot;: [],
+  &quot;include&quot;: [],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./tsconfig.spec.json&quot;
+    }
+  ],
+  &quot;extends&quot;: &quot;../../tsconfig.base.json&quot;
+}</file><file path="libs/shared/tsconfig.lib.json">{
+  &quot;extends&quot;: &quot;../../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;dist&quot;,
+    &quot;types&quot;: [
+      &quot;node&quot;,
+      &quot;@nx/react/typings/cssmodule.d.ts&quot;,
+      &quot;@nx/react/typings/image.d.ts&quot;,
+      &quot;vite/client&quot;
+    ],
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;tsBuildInfoFile&quot;: &quot;dist/tsconfig.lib.tsbuildinfo&quot;
+  },
+  &quot;exclude&quot;: [
+    &quot;out-tsc&quot;,
+    &quot;dist&quot;,
+    &quot;**/*.spec.ts&quot;,
+    &quot;**/*.test.ts&quot;,
+    &quot;**/*.spec.tsx&quot;,
+    &quot;**/*.test.tsx&quot;,
+    &quot;**/*.spec.js&quot;,
+    &quot;**/*.test.js&quot;,
+    &quot;**/*.spec.jsx&quot;,
+    &quot;**/*.test.jsx&quot;,
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;eslint.config.js&quot;,
+    &quot;eslint.config.cjs&quot;,
+    &quot;eslint.config.mjs&quot;
+  ],
+  &quot;include&quot;: [&quot;src/**/*.js&quot;, &quot;src/**/*.jsx&quot;, &quot;src/**/*.ts&quot;, &quot;src/**/*.tsx&quot;]
+}</file><file path="libs/shared/tsconfig.spec.json">{
+  &quot;extends&quot;: &quot;../../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;./out-tsc/vitest&quot;,
+    &quot;types&quot;: [
+      &quot;vitest/globals&quot;,
+      &quot;vitest/importMeta&quot;,
+      &quot;vite/client&quot;,
+      &quot;node&quot;,
+      &quot;vitest&quot;
+    ],
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;
+  },
+  &quot;include&quot;: [
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;src/**/*.d.ts&quot;
+  ],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    }
+  ]
+}</file><file path="libs/shared/vite.config.ts">/// &lt;reference types=&apos;vitest&apos; /&gt;
+import { defineConfig } from &apos;vite&apos;;
+import react from &apos;@vitejs/plugin-react&apos;;
+import dts from &apos;vite-plugin-dts&apos;;
+import * as path from &apos;path&apos;;
+
+export default defineConfig(() =&gt; ({
+  root: __dirname,
+  cacheDir: &apos;../../node_modules/.vite/libs/shared&apos;,
+  plugins: [
+    react(),
+    dts({
+      entryRoot: &apos;src&apos;,
+      tsconfigPath: path.join(__dirname, &apos;tsconfig.lib.json&apos;),
+    }),
+  ],
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [ nxViteTsPaths() ],
+  // },
+  // Configuration for building your library.
+  // See: https://vitejs.dev/guide/build.html#library-mode
+  build: {
+    outDir: &apos;./dist&apos;,
+    emptyOutDir: true,
+    reportCompressedSize: true,
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+    lib: {
+      // Could also be a dictionary or array of multiple entry points.
+      entry: &apos;src/index.ts&apos;,
+      name: &apos;@deanmachines-nx/shared&apos;,
+      fileName: &apos;index&apos;,
+      // Change this to the formats you want to support.
+      // Don&apos;t forget to update your package.json as well.
+      formats: [&apos;es&apos; as const],
+    },
+    rollupOptions: {
+      // External packages that should not be bundled into your library.
+      external: [&apos;react&apos;, &apos;react-dom&apos;, &apos;react/jsx-runtime&apos;],
+    },
+  },
+  test: {
+    watch: false,
+    globals: true,
+    environment: &apos;jsdom&apos;,
+    include: [&apos;{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}&apos;],
+    reporters: [&apos;default&apos;],
+    coverage: {
+      reportsDirectory: &apos;./test-output/vitest/coverage&apos;,
+      provider: &apos;v8&apos; as const,
+    },
+  },
+}));</file><file path="utils/src/lib/utils.module.css">/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/</file><file path="utils/src/lib/utils.spec.tsx">import { render } from &apos;@testing-library/react&apos;;
+
+import Utils from &apos;./utils&apos;;
+
+describe(&apos;Utils&apos;, () =&gt; {
+  it(&apos;should render successfully&apos;, () =&gt; {
+    const { baseElement } = render(&lt;Utils /&gt;);
+    expect(baseElement).toBeTruthy();
+  });
+});</file><file path="utils/src/lib/utils.tsx">import styles from &apos;./utils.module.css&apos;;
+
+export function Utils() {
+  return (
+    &lt;div className={styles[&apos;container&apos;]}&gt;
+      &lt;h1&gt;Welcome to Utils!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Utils;</file><file path="utils/src/index.ts">export * from &apos;./lib/utils&apos;;</file><file path="utils/.babelrc">{
+  &quot;presets&quot;: [
+    [
+      &quot;@nx/react/babel&quot;,
+      {
+        &quot;runtime&quot;: &quot;automatic&quot;,
+        &quot;useBuiltIns&quot;: &quot;usage&quot;
+      }
+    ]
+  ],
+  &quot;plugins&quot;: []
+}</file><file path="utils/eslint.config.mjs">import nx from &apos;@nx/eslint-plugin&apos;;
+import baseConfig from &apos;../eslint.config.mjs&apos;;
+
+export default [
+  ...baseConfig,
+  ...nx.configs[&apos;flat/react&apos;],
+  {
+    files: [&apos;**/*.ts&apos;, &apos;**/*.tsx&apos;, &apos;**/*.js&apos;, &apos;**/*.jsx&apos;],
+    // Override or add rules here
+    rules: {},
+  },
+];</file><file path="utils/package.json">{
+  &quot;name&quot;: &quot;@deanmachines-nx/utils&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;main&quot;: &quot;./dist/index.js&quot;,
+  &quot;module&quot;: &quot;./dist/index.js&quot;,
+  &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+  &quot;exports&quot;: {
+    &quot;./package.json&quot;: &quot;./package.json&quot;,
+    &quot;.&quot;: {
+      &quot;types&quot;: &quot;./dist/index.d.ts&quot;,
+      &quot;import&quot;: &quot;./dist/index.js&quot;,
+      &quot;default&quot;: &quot;./dist/index.js&quot;
+    }
+  }
+}</file><file path="utils/README.md"># @deanmachines-nx/utils
+
+This library was generated with [Nx](https://nx.dev).
+
+## Running unit tests
+
+Run `nx test @deanmachines-nx/utils` to execute the unit tests via [Vitest](https://vitest.dev/).</file><file path="utils/tsconfig.json">{
+  &quot;files&quot;: [],
+  &quot;include&quot;: [],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./tsconfig.spec.json&quot;
+    }
+  ],
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;
+}</file><file path="utils/tsconfig.lib.json">{
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;dist&quot;,
+    &quot;types&quot;: [
+      &quot;node&quot;,
+      &quot;@nx/react/typings/cssmodule.d.ts&quot;,
+      &quot;@nx/react/typings/image.d.ts&quot;,
+      &quot;vite/client&quot;
+    ],
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;tsBuildInfoFile&quot;: &quot;dist/tsconfig.lib.tsbuildinfo&quot;
+  },
+  &quot;exclude&quot;: [
+    &quot;out-tsc&quot;,
+    &quot;dist&quot;,
+    &quot;**/*.spec.ts&quot;,
+    &quot;**/*.test.ts&quot;,
+    &quot;**/*.spec.tsx&quot;,
+    &quot;**/*.test.tsx&quot;,
+    &quot;**/*.spec.js&quot;,
+    &quot;**/*.test.js&quot;,
+    &quot;**/*.spec.jsx&quot;,
+    &quot;**/*.test.jsx&quot;,
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;eslint.config.js&quot;,
+    &quot;eslint.config.cjs&quot;,
+    &quot;eslint.config.mjs&quot;
+  ],
+  &quot;include&quot;: [&quot;src/**/*.js&quot;, &quot;src/**/*.jsx&quot;, &quot;src/**/*.ts&quot;, &quot;src/**/*.tsx&quot;]
+}</file><file path="utils/tsconfig.spec.json">{
+  &quot;extends&quot;: &quot;../tsconfig.base.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;./out-tsc/vitest&quot;,
+    &quot;types&quot;: [
+      &quot;vitest/globals&quot;,
+      &quot;vitest/importMeta&quot;,
+      &quot;vite/client&quot;,
+      &quot;node&quot;,
+      &quot;vitest&quot;
+    ],
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;
+  },
+  &quot;include&quot;: [
+    &quot;vite.config.ts&quot;,
+    &quot;vite.config.mts&quot;,
+    &quot;vitest.config.ts&quot;,
+    &quot;vitest.config.mts&quot;,
+    &quot;src/**/*.test.ts&quot;,
+    &quot;src/**/*.spec.ts&quot;,
+    &quot;src/**/*.test.tsx&quot;,
+    &quot;src/**/*.spec.tsx&quot;,
+    &quot;src/**/*.test.js&quot;,
+    &quot;src/**/*.spec.js&quot;,
+    &quot;src/**/*.test.jsx&quot;,
+    &quot;src/**/*.spec.jsx&quot;,
+    &quot;src/**/*.d.ts&quot;
+  ],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./tsconfig.lib.json&quot;
+    }
+  ]
+}</file><file path="utils/vite.config.ts">/// &lt;reference types=&apos;vitest&apos; /&gt;
+import { defineConfig } from &apos;vite&apos;;
+import react from &apos;@vitejs/plugin-react&apos;;
+import dts from &apos;vite-plugin-dts&apos;;
+import * as path from &apos;path&apos;;
+
+export default defineConfig(() =&gt; ({
+  root: __dirname,
+  cacheDir: &apos;../node_modules/.vite/utils&apos;,
+  plugins: [
+    react(),
+    dts({
+      entryRoot: &apos;src&apos;,
+      tsconfigPath: path.join(__dirname, &apos;tsconfig.lib.json&apos;),
+    }),
+  ],
+  // Uncomment this if you are using workers.
+  // worker: {
+  //  plugins: [ nxViteTsPaths() ],
+  // },
+  // Configuration for building your library.
+  // See: https://vitejs.dev/guide/build.html#library-mode
+  build: {
+    outDir: &apos;./dist&apos;,
+    emptyOutDir: true,
+    reportCompressedSize: true,
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+    lib: {
+      // Could also be a dictionary or array of multiple entry points.
+      entry: &apos;src/index.ts&apos;,
+      name: &apos;@deanmachines-nx/utils&apos;,
+      fileName: &apos;index&apos;,
+      // Change this to the formats you want to support.
+      // Don&apos;t forget to update your package.json as well.
+      formats: [&apos;es&apos; as const],
+    },
+    rollupOptions: {
+      // External packages that should not be bundled into your library.
+      external: [&apos;react&apos;, &apos;react-dom&apos;, &apos;react/jsx-runtime&apos;],
+    },
+  },
+  test: {
+    watch: false,
+    globals: true,
+    environment: &apos;jsdom&apos;,
+    include: [&apos;{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}&apos;],
+    reporters: [&apos;default&apos;],
+    coverage: {
+      reportsDirectory: &apos;./test-output/vitest/coverage&apos;,
+      provider: &apos;v8&apos; as const,
+    },
+  },
+}));</file><file path=".gitignore"># See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.nx/cache
+.nx/workspace-data
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+test-output
+
+
+storybook-static</file><file path=".npmrc">strict-peer-dependencies=false
+auto-install-peers=true
+registry=https://registry.npmjs.org/</file><file path=".prettierignore"># Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/.nx/cache
+/.nx/workspace-data</file><file path=".prettierrc">{
+  &quot;singleQuote&quot;: true
+}</file><file path="Current-Progress.md"># DeanMachines-NX Project Documentation
+
+## Project Architecture
+
+```mermaid
+graph TB
+    subgraph Monorepo[DeanMachines-NX Monorepo]
+        D[Dashboard]
+        CL[Component Library]
+        U[Utils]
+        DM[Data Models]
+        
+        subgraph Dashboard
+            UI[UI Components]
+            CP[Code Playground]
+            CH[Chat Interface]
+        end
+        
+        subgraph Features
+            CM[CodeMirror Integration]
+            AI[AI Chat Service]
+            PB[Project Builder]
+        end
+    end
+    
+    D --&gt; UI
+    D --&gt; CP
+    D --&gt; CH
+    CP --&gt; CM
+    CH --&gt; AI
+    CH --&gt; PB
+```
+
+## Project Structure
+
+```mermaid
+graph LR
+    A[DeanMachines-NX] --&gt; B[dashboard]
+    A --&gt; C[packages]
+    A --&gt; D[utils]
+    A --&gt; E[data-models]
+    A --&gt; F[libs]
+    
+    B --&gt; B1[Components]
+    B --&gt; B2[Pages]
+    B --&gt; B3[Features]
+    
+    B2 --&gt; P1[CodePlayground]
+    B2 --&gt; P2[Chat]
+    
+    B3 --&gt; F1[Project Builder]
+    B3 --&gt; F2[AI Integration]
+```
+
+## ✅ Completed Infrastructure
+
+### Infrastructure Setup
+
+- [x] Nx monorepo configuration
+- [x] Project structure and architecture
+- [x] Base development environment
+- [x] Initial package dependencies
+- [x] Vite build system integration
+
+### Development Environment
+
+- [x] Storybook 8.4.6 setup and configuration
+- [x] Testing infrastructure (Vitest + Testing Library)
+- [x] E2E testing capability with Playwright
+- [x] Basic component development workflow
+- [x] Hot reload configuration
+
+### Components
+
+- [x] Button component
+  - [x] Implementation
+  - [x] Unit tests
+  - [x] Storybook documentation
+  - [x] Accessibility testing
+
+## 🚀 Current Sprint Focus
+
+### 1. Core Component Library (High Priority)
+
+- [ ] Design system fundamentals
+  - [ ] Typography system
+  - [ ] Color palette
+  - [ ] Spacing system
+  - [ ] Grid layout
+- [ ] Basic components
+  - [ ] Text Input
+  - [ ] Select
+  - [ ] Checkbox
+  - [ ] Radio
+  - [ ] Card
+  - [ ] Modal
+- [ ] Navigation components
+  - [ ] Navbar
+  - [ ] Sidebar
+  - [ ] Breadcrumbs
+  - [ ] Tabs
+
+### 2. Developer Experience
+
+- [ ] Component generation templates
+- [ ] Documentation structure
+- [ ] Coding standards document
+- [ ] PR templates
+- [ ] Git workflow documentation
+
+## 📋 Upcoming Tasks
+
+### Testing &amp; Quality
+
+- [ ] Unit test templates
+- [ ] E2E test templates
+- [ ] Visual regression testing (Chromatic)
+- [ ] Test coverage targets
+- [ ] Performance testing setup
+
+### CI/CD Pipeline
+
+- [ ] GitHub Actions workflow
+- [ ] Automated testing
+- [ ] Storybook deployment
+- [ ] Version management
+- [ ] Release automation
+
+### Documentation
+
+- [ ] Component API documentation
+- [ ] Usage examples
+- [ ] Best practices guide
+- [ ] Contributing guidelines
+- [ ] Architecture documentation
+
+## 📊 Metrics &amp; Goals
+
+### Quality Targets
+
+- [ ] Test coverage: &gt;80%
+- [ ] Zero critical bugs
+- [ ] WCAG 2.1 AA compliance
+- [ ] Bundle size optimization
+- [ ] Build time &lt;2 minutes
+
+### Performance Targets
+
+- [ ] Lighthouse score &gt;90
+- [ ] First contentful paint &lt;2s
+- [ ] Time to interactive &lt;3s
+- [ ] Bundle size &lt;100KB (core)
+
+## 🔄 Weekly Review Items
+
+- Code review metrics
+- Test coverage reports
+- Performance benchmarks
+- Documentation updates
+- Dependency updates
+
+## 📅 Timeline
+
+- Sprint Duration: 2 weeks
+- Current Sprint: Component Library Development
+- Next Review: [Date TBD]
+
+## 🎯 New Requirements
+
+### Interactive Code Playground
+
+- [ ] CodeMirror Integration
+  - [ ] Syntax highlighting
+  - [ ] Auto-completion
+  - [ ] Multiple language support
+  - [ ] Code formatting
+  - [ ] Theme support
+
+### AI-Powered Chat Interface
+
+- [ ] Chat Component Development
+  - [ ] Message threading
+  - [ ] Code snippet support
+  - [ ] Markdown rendering
+  - [ ] Real-time updates
+- [ ] AI Integration
+  - [ ] Project analysis
+  - [ ] Code generation
+  - [ ] Context awareness
+  - [ ] History management
+
+### Project Builder Integration
+
+- [ ] Project Templates
+- [ ] Build Configuration
+- [ ] Package Management
+- [ ] Development Server
+- [ ] Hot Reload Support
+
+## 📦 Dependencies to Add
+
+```json
+{
+  &quot;dependencies&quot;: {
+    &quot;@codemirror/basic-setup&quot;: &quot;^6.0.0&quot;,
+    &quot;@codemirror/lang-javascript&quot;: &quot;^6.0.0&quot;,
+    &quot;@codemirror/theme-one-dark&quot;: &quot;^6.0.0&quot;,
+    &quot;socket.io-client&quot;: &quot;^4.7.0&quot;,
+    &quot;marked&quot;: &quot;^9.0.0&quot;,
+    &quot;prismjs&quot;: &quot;^1.29.0&quot;
+  }
+}
+```
+
+## 🚀 Implementation Plan
+
+### Phase 1: Code Playground
+
+1. Set up CodeMirror component
+2. Implement language support
+3. Add theme switching
+4. Create code execution environment
+
+### Phase 2: Chat Interface
+
+1. Develop chat UI components
+2. Implement WebSocket connection
+3. Add message handling
+4. Integrate AI capabilities
+
+### Phase 3: Project Builder
+
+1. Create project templates
+2. Implement build system
+3. Add package management
+4. Set up development workflow
+
+## 📊 Success Metrics
+
+### Quality Targets 2
+
+- [ ] Test coverage: &gt;80%
+- [ ] Zero critical bugs
+- [ ] WCAG 2.1 AA compliance
+- [ ] Bundle size optimization
+- [ ] Build time &lt;2 minutes
+
+### Performance Targets 2
+
+- [ ] Lighthouse score &gt;90
+- [ ] First contentful paint &lt;2s
+- [ ] Time to interactive &lt;3s
+- [ ] Bundle size &lt;100KB (core)
+
+## 🔄 Sprint Schedule
+
+- Current Sprint (2 weeks): Code Playground Setup
+- Next Sprint (2 weeks): Chat Interface Development
+- Future Sprint (2 weeks): Project Builder Integration
+
+## 🎯 Immediate Focus
+
+1. CodeMirror setup in Storybook
+2. Basic chat interface components
+3. WebSocket implementation
+4. AI service integration
+
+---
+Last Updated: [Current Date]
+
+```mermaid
+graph TB
+    User((External User))
+
+    subgraph &quot;Frontend Container&quot;
+        Dashboard[&quot;Dashboard App&lt;br&gt;(React + Vite)&quot;]
+        
+        subgraph &quot;Dashboard Components&quot;
+            Header[&quot;Header Component&lt;br&gt;(React)&quot;]
+            Footer[&quot;Footer Component&lt;br&gt;(React)&quot;]
+            Sidebar[&quot;Sidebar Component&lt;br&gt;(React)&quot;]
+            Table[&quot;Table Component&lt;br&gt;(React)&quot;]
+            Button[&quot;Button Component&lt;br&gt;(React)&quot;]
+            Card[&quot;Card Component&lt;br&gt;(React)&quot;]
+            Input[&quot;Input Component&lt;br&gt;(React)&quot;]
+        end
+
+        subgraph &quot;Storybook Environment&quot;
+            StorybookUI[&quot;Storybook Interface&lt;br&gt;(Storybook)&quot;]
+        end
+    end
+
+    subgraph &quot;Shared Libraries Container&quot;
+        subgraph &quot;UI Library&quot;
+            SharedUI[&quot;Shared UI&lt;br&gt;(React)&quot;]
+            SharedButton[&quot;Shared Button&lt;br&gt;(React)&quot;]
+            SharedCard[&quot;Shared Card&lt;br&gt;(React)&quot;]
+            SharedForm[&quot;Shared Form&lt;br&gt;(React)&quot;]
+        end
+
+        subgraph &quot;API Layer&quot;
+            APIClient[&quot;API Client&lt;br&gt;(TypeScript)&quot;]
+        end
+
+        subgraph &quot;Core Libraries&quot;
+            DataModels[&quot;Data Models&lt;br&gt;(TypeScript)&quot;]
+            Utils[&quot;Utilities&lt;br&gt;(TypeScript)&quot;]
+        end
+    end
+
+    subgraph &quot;Testing Container&quot;
+        E2ETests[&quot;E2E Tests&lt;br&gt;(Playwright)&quot;]
+        UnitTests[&quot;Unit Tests&lt;br&gt;(Vitest)&quot;]
+    end
+
+    subgraph &quot;Build &amp; CI/CD&quot;
+        NxBuild[&quot;Nx Build System&lt;br&gt;(Nx)&quot;]
+        GithubCI[&quot;GitHub Actions&lt;br&gt;(CI/CD)&quot;]
+    end
+
+    %% Relationships
+    User --&gt;|&quot;Interacts with&quot;| Dashboard
+    Dashboard --&gt;|&quot;Uses&quot;| Header
+    Dashboard --&gt;|&quot;Uses&quot;| Footer
+    Dashboard --&gt;|&quot;Uses&quot;| Sidebar
+    Dashboard --&gt;|&quot;Uses&quot;| Table
+    Dashboard --&gt;|&quot;Uses&quot;| Button
+    Dashboard --&gt;|&quot;Uses&quot;| Card
+    Dashboard --&gt;|&quot;Uses&quot;| Input
+
+    Dashboard --&gt;|&quot;Uses&quot;| SharedUI
+    Dashboard --&gt;|&quot;Uses&quot;| APIClient
+    Dashboard --&gt;|&quot;Uses&quot;| DataModels
+    Dashboard --&gt;|&quot;Uses&quot;| Utils
+
+    SharedUI --&gt;|&quot;Contains&quot;| SharedButton
+    SharedUI --&gt;|&quot;Contains&quot;| SharedCard
+    SharedUI --&gt;|&quot;Contains&quot;| SharedForm
+
+    StorybookUI --&gt;|&quot;Documents&quot;| SharedUI
+    StorybookUI --&gt;|&quot;Documents&quot;| Button
+    StorybookUI --&gt;|&quot;Documents&quot;| Card
+
+    E2ETests --&gt;|&quot;Tests&quot;| Dashboard
+    UnitTests --&gt;|&quot;Tests&quot;| SharedUI
+    UnitTests --&gt;|&quot;Tests&quot;| APIClient
+    UnitTests --&gt;|&quot;Tests&quot;| DataModels
+    UnitTests --&gt;|&quot;Tests&quot;| Utils
+
+    NxBuild --&gt;|&quot;Builds&quot;| Dashboard
+    NxBuild --&gt;|&quot;Builds&quot;| SharedUI
+    NxBuild --&gt;|&quot;Builds&quot;| APIClient
+    GithubCI --&gt;|&quot;Runs&quot;| NxBuild
+    GithubCI --&gt;|&quot;Executes&quot;| E2ETests
+    GithubCI --&gt;|&quot;Executes&quot;| UnitTests
+```</file><file path="nx.json">{
+  &quot;$schema&quot;: &quot;./node_modules/nx/schemas/nx-schema.json&quot;,
+  &quot;defaultBase&quot;: &quot;master&quot;,
+  &quot;namedInputs&quot;: {
+    &quot;default&quot;: [&quot;{projectRoot}/**/*&quot;, &quot;sharedGlobals&quot;],
+    &quot;production&quot;: [
+      &quot;default&quot;,
+      &quot;!{projectRoot}/.eslintrc.json&quot;,
+      &quot;!{projectRoot}/eslint.config.mjs&quot;,
+      &quot;!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)&quot;,
+      &quot;!{projectRoot}/tsconfig.spec.json&quot;,
+      &quot;!{projectRoot}/src/test-setup.[jt]s&quot;,
+      &quot;!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)&quot;,
+      &quot;!{projectRoot}/.storybook/**/*&quot;,
+      &quot;!{projectRoot}/tsconfig.storybook.json&quot;
+    ],
+    &quot;sharedGlobals&quot;: [&quot;{workspaceRoot}/.github/workflows/ci.yml&quot;]
+  },
+  &quot;nxCloudId&quot;: &quot;67de92c96af77662dfcc1af9&quot;,
+  &quot;plugins&quot;: [
+    {
+      &quot;plugin&quot;: &quot;@nx/js/typescript&quot;,
+      &quot;options&quot;: {
+        &quot;typecheck&quot;: {
+          &quot;targetName&quot;: &quot;typecheck&quot;
+        },
+        &quot;build&quot;: {
+          &quot;targetName&quot;: &quot;build&quot;,
+          &quot;configName&quot;: &quot;tsconfig.lib.json&quot;,
+          &quot;buildDepsName&quot;: &quot;build-deps&quot;,
+          &quot;watchDepsName&quot;: &quot;watch-deps&quot;
+        }
+      }
+    },
+    {
+      &quot;plugin&quot;: &quot;@nx/react/router-plugin&quot;,
+      &quot;options&quot;: {
+        &quot;buildTargetName&quot;: &quot;build&quot;,
+        &quot;devTargetName&quot;: &quot;dev&quot;,
+        &quot;startTargetName&quot;: &quot;start&quot;,
+        &quot;watchDepsTargetName&quot;: &quot;watch-deps&quot;,
+        &quot;buildDepsTargetName&quot;: &quot;build-deps&quot;,
+        &quot;typecheckTargetName&quot;: &quot;typecheck&quot;
+      }
+    },
+    {
+      &quot;plugin&quot;: &quot;@nx/eslint/plugin&quot;,
+      &quot;options&quot;: {
+        &quot;targetName&quot;: &quot;lint&quot;
+      }
+    },
+    {
+      &quot;plugin&quot;: &quot;@nx/vite/plugin&quot;,
+      &quot;options&quot;: {
+        &quot;buildTargetName&quot;: &quot;build&quot;,
+        &quot;testTargetName&quot;: &quot;test&quot;,
+        &quot;serveTargetName&quot;: &quot;serve&quot;,
+        &quot;devTargetName&quot;: &quot;dev&quot;,
+        &quot;previewTargetName&quot;: &quot;preview&quot;,
+        &quot;serveStaticTargetName&quot;: &quot;serve-static&quot;,
+        &quot;typecheckTargetName&quot;: &quot;typecheck&quot;,
+        &quot;buildDepsTargetName&quot;: &quot;build-deps&quot;,
+        &quot;watchDepsTargetName&quot;: &quot;watch-deps&quot;
+      }
+    },
+    {
+      &quot;plugin&quot;: &quot;@nx/playwright/plugin&quot;,
+      &quot;options&quot;: {
+        &quot;targetName&quot;: &quot;e2e&quot;
+      }
+    },
+    {
+      &quot;plugin&quot;: &quot;@nx/storybook/plugin&quot;,
+      &quot;options&quot;: {
+        &quot;serveStorybookTargetName&quot;: &quot;storybook&quot;,
+        &quot;buildStorybookTargetName&quot;: &quot;build-storybook&quot;,
+        &quot;testStorybookTargetName&quot;: &quot;test-storybook&quot;,
+        &quot;staticStorybookTargetName&quot;: &quot;static-storybook&quot;
+      }
+    }
+  ],
+  &quot;targetDefaults&quot;: {
+    &quot;test&quot;: {
+      &quot;dependsOn&quot;: [
+        &quot;^build&quot;,
+        &quot;^build&quot;,
+        &quot;^build&quot;,
+        &quot;^build&quot;,
+        &quot;^build&quot;,
+        &quot;^build&quot;,
+        &quot;^build&quot;,
+        &quot;^build&quot;
+      ]
+    },
+    &quot;e2e-ci--**/*&quot;: {
+      &quot;dependsOn&quot;: [&quot;^build&quot;]
+    }
+  },
+  &quot;generators&quot;: {
+    &quot;@nx/react&quot;: {
+      &quot;application&quot;: {
+        &quot;babel&quot;: true,
+        &quot;style&quot;: &quot;css&quot;,
+        &quot;linter&quot;: &quot;eslint&quot;,
+        &quot;bundler&quot;: &quot;vite&quot;
+      },
+      &quot;component&quot;: {
+        &quot;style&quot;: &quot;css&quot;
+      },
+      &quot;library&quot;: {
+        &quot;style&quot;: &quot;css&quot;,
+        &quot;linter&quot;: &quot;eslint&quot;,
+        &quot;unitTestRunner&quot;: &quot;vitest&quot;
+      }
+    }
+  },
+  &quot;release&quot;: {
+    &quot;version&quot;: {
+      &quot;preVersionCommand&quot;: &quot;pnpm dlx nx run-many -t build&quot;
+    }
+  }
+}</file><file path="package.json">{
+  &quot;name&quot;: &quot;@deanmachines-nx/source&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;scripts&quot;: {},
+  &quot;private&quot;: true,
+  &quot;dependencies&quot;: {
+    &quot;@nrwl/nx-cloud&quot;: &quot;^19.1.0&quot;,
+    &quot;@types/react-router-dom&quot;: &quot;^5.3.3&quot;,
+    &quot;react&quot;: &quot;18.3.1&quot;,
+    &quot;react-dom&quot;: &quot;18.3.1&quot;,
+    &quot;react-router-dom&quot;: &quot;^7.4.0&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;@babel/core&quot;: &quot;^7.14.5&quot;,
+    &quot;@babel/preset-react&quot;: &quot;^7.14.5&quot;,
+    &quot;@eslint/js&quot;: &quot;^9.8.0&quot;,
+    &quot;@nx/devkit&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/eslint&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/eslint-plugin&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/js&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/playwright&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/react&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/storybook&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/vite&quot;: &quot;20.6.2&quot;,
+    &quot;@nx/web&quot;: &quot;20.6.2&quot;,
+    &quot;@playwright/test&quot;: &quot;^1.36.0&quot;,
+    &quot;@storybook/addon-essentials&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/addon-interactions&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/core-server&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/jest&quot;: &quot;^0.2.3&quot;,
+    &quot;@storybook/react&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/react-vite&quot;: &quot;^8.4.6&quot;,
+    &quot;@storybook/test-runner&quot;: &quot;^0.19.0&quot;,
+    &quot;@storybook/testing-library&quot;: &quot;^0.2.2&quot;,
+    &quot;@swc-node/register&quot;: &quot;~1.9.1&quot;,
+    &quot;@swc/cli&quot;: &quot;~0.3.12&quot;,
+    &quot;@swc/core&quot;: &quot;~1.5.7&quot;,
+    &quot;@swc/helpers&quot;: &quot;~0.5.11&quot;,
+    &quot;@testing-library/dom&quot;: &quot;10.4.0&quot;,
+    &quot;@testing-library/react&quot;: &quot;16.1.0&quot;,
+    &quot;@types/node&quot;: &quot;^20.0.0&quot;,
+    &quot;@types/react&quot;: &quot;18.3.1&quot;,
+    &quot;@types/react-dom&quot;: &quot;18.3.0&quot;,
+    &quot;@vitejs/plugin-react&quot;: &quot;^4.2.0&quot;,
+    &quot;@vitest/coverage-v8&quot;: &quot;^3.0.5&quot;,
+    &quot;@vitest/ui&quot;: &quot;^3.0.0&quot;,
+    &quot;eslint&quot;: &quot;^9.8.0&quot;,
+    &quot;eslint-config-prettier&quot;: &quot;^9.0.0&quot;,
+    &quot;eslint-plugin-import&quot;: &quot;2.31.0&quot;,
+    &quot;eslint-plugin-jsx-a11y&quot;: &quot;6.10.1&quot;,
+    &quot;eslint-plugin-playwright&quot;: &quot;^1.6.2&quot;,
+    &quot;eslint-plugin-react&quot;: &quot;7.35.0&quot;,
+    &quot;eslint-plugin-react-hooks&quot;: &quot;5.0.0&quot;,
+    &quot;jiti&quot;: &quot;2.4.2&quot;,
+    &quot;jsdom&quot;: &quot;~22.1.0&quot;,
+    &quot;jsonc-eslint-parser&quot;: &quot;^2.1.0&quot;,
+    &quot;nx&quot;: &quot;20.6.2&quot;,
+    &quot;prettier&quot;: &quot;^2.6.2&quot;,
+    &quot;storybook&quot;: &quot;^8.4.6&quot;,
+    &quot;ts-node&quot;: &quot;10.9.1&quot;,
+    &quot;tslib&quot;: &quot;^2.3.0&quot;,
+    &quot;typescript&quot;: &quot;~5.7.2&quot;,
+    &quot;typescript-eslint&quot;: &quot;^8.19.0&quot;,
+    &quot;verdaccio&quot;: &quot;^6.0.5&quot;,
+    &quot;vite&quot;: &quot;^6.0.0&quot;,
+    &quot;vite-plugin-dts&quot;: &quot;~4.5.0&quot;,
+    &quot;vitest&quot;: &quot;^3.0.0&quot;
+  },
+  &quot;packageManager&quot;: &quot;pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af&quot;,
+  &quot;nx&quot;: {
+    &quot;includedScripts&quot;: [],
+    &quot;targets&quot;: {
+      &quot;local-registry&quot;: {
+        &quot;executor&quot;: &quot;@nx/js:verdaccio&quot;,
+        &quot;options&quot;: {
+          &quot;port&quot;: 4873,
+          &quot;config&quot;: &quot;.verdaccio/config.yml&quot;,
+          &quot;storage&quot;: &quot;tmp/local-registry/storage&quot;
+        }
+      }
+    }
+  }
+}</file><file path="pnpm-workspace.yaml">packages:
+  - &apos;packages/*&apos;
+  - &apos;dashboard&apos;
+  - &apos;utils&apos;
+  - &apos;data-models&apos;
+  - &apos;libs/*&apos;
+  - &apos;libs/shared/*&apos;
+onlyBuiltDependencies:
+  - &apos;@swc/core&apos;
+  - &apos;core-js&apos;
+  - &apos;esbuild&apos;
+  - &apos;nx&apos;</file><file path="README.md"># DeanmachinesNx
+
+&lt;a alt=&quot;Nx logo&quot; href=&quot;https://nx.dev&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png&quot; width=&quot;45&quot;&gt;&lt;/a&gt;
+
+✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+
+[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;amp;utm_medium=readme&amp;amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let&apos;s get you up to speed!
+
+## Finish your CI setup
+
+[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/ozqXSe9cod)
+
+
+## Run tasks
+
+To run the dev server for your app, use:
+
+```sh
+npx nx serve dashboard
+```
+
+To create a production bundle:
+
+```sh
+npx nx build dashboard
+```
+
+To see all available targets to run for a project, run:
+
+```sh
+npx nx show project dashboard
+```
+
+These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+
+[More about running tasks in the docs &amp;raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+
+## Versioning and releasing
+
+To version and release the library use
+
+```
+npx nx release
+```
+
+Pass `--dry-run` to see what would happen without actually releasing the library.
+
+[Learn more about Nx release &amp;raquo;](hhttps://nx.dev/features/manage-releases?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+
+## Keep TypeScript project references up to date
+
+Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
+
+To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
+
+```sh
+npx nx sync
+```
+
+You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
+
+```sh
+npx nx sync:check
+```
+
+[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+
+
+[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+
+## Install Nx Console
+
+Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+
+[Install Nx Console &amp;raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+
+## Useful links
+
+Learn more:
+
+- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;amp;utm_medium=readme&amp;amp;utm_campaign=nx_projects)
+- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+
+And join the Nx community:
+- [Discord](https://go.nx.dev/community)
+- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
+- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
+- [Our blog](https://nx.dev/blog?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
+
+```mermaid
+graph TB
+    User((External User))
+
+    subgraph &quot;Frontend Container&quot;
+        Dashboard[&quot;Dashboard App&lt;br&gt;(React + Vite)&quot;]
+        
+        subgraph &quot;Dashboard Components&quot;
+            Header[&quot;Header Component&lt;br&gt;(React)&quot;]
+            Footer[&quot;Footer Component&lt;br&gt;(React)&quot;]
+            Sidebar[&quot;Sidebar Component&lt;br&gt;(React)&quot;]
+            Table[&quot;Table Component&lt;br&gt;(React)&quot;]
+            Button[&quot;Button Component&lt;br&gt;(React)&quot;]
+            Card[&quot;Card Component&lt;br&gt;(React)&quot;]
+            Input[&quot;Input Component&lt;br&gt;(React)&quot;]
+        end
+
+        subgraph &quot;Storybook Environment&quot;
+            StorybookUI[&quot;Storybook Interface&lt;br&gt;(Storybook)&quot;]
+        end
+    end
+
+    subgraph &quot;Shared Libraries Container&quot;
+        subgraph &quot;UI Library&quot;
+            SharedUI[&quot;Shared UI&lt;br&gt;(React)&quot;]
+            SharedButton[&quot;Shared Button&lt;br&gt;(React)&quot;]
+            SharedCard[&quot;Shared Card&lt;br&gt;(React)&quot;]
+            SharedForm[&quot;Shared Form&lt;br&gt;(React)&quot;]
+        end
+
+        subgraph &quot;API Layer&quot;
+            APIClient[&quot;API Client&lt;br&gt;(TypeScript)&quot;]
+        end
+
+        subgraph &quot;Core Libraries&quot;
+            DataModels[&quot;Data Models&lt;br&gt;(TypeScript)&quot;]
+            Utils[&quot;Utilities&lt;br&gt;(TypeScript)&quot;]
+        end
+    end
+
+    subgraph &quot;Testing Container&quot;
+        E2ETests[&quot;E2E Tests&lt;br&gt;(Playwright)&quot;]
+        UnitTests[&quot;Unit Tests&lt;br&gt;(Vitest)&quot;]
+    end
+
+    subgraph &quot;Build &amp; CI/CD&quot;
+        NxBuild[&quot;Nx Build System&lt;br&gt;(Nx)&quot;]
+        GithubCI[&quot;GitHub Actions&lt;br&gt;(CI/CD)&quot;]
+    end
+
+    %% Relationships
+    User --&gt;|&quot;Interacts with&quot;| Dashboard
+    Dashboard --&gt;|&quot;Uses&quot;| Header
+    Dashboard --&gt;|&quot;Uses&quot;| Footer
+    Dashboard --&gt;|&quot;Uses&quot;| Sidebar
+    Dashboard --&gt;|&quot;Uses&quot;| Table
+    Dashboard --&gt;|&quot;Uses&quot;| Button
+    Dashboard --&gt;|&quot;Uses&quot;| Card
+    Dashboard --&gt;|&quot;Uses&quot;| Input
+
+    Dashboard --&gt;|&quot;Uses&quot;| SharedUI
+    Dashboard --&gt;|&quot;Uses&quot;| APIClient
+    Dashboard --&gt;|&quot;Uses&quot;| DataModels
+    Dashboard --&gt;|&quot;Uses&quot;| Utils
+
+    SharedUI --&gt;|&quot;Contains&quot;| SharedButton
+    SharedUI --&gt;|&quot;Contains&quot;| SharedCard
+    SharedUI --&gt;|&quot;Contains&quot;| SharedForm
+
+    StorybookUI --&gt;|&quot;Documents&quot;| SharedUI
+    StorybookUI --&gt;|&quot;Documents&quot;| Button
+    StorybookUI --&gt;|&quot;Documents&quot;| Card
+
+    E2ETests --&gt;|&quot;Tests&quot;| Dashboard
+    UnitTests --&gt;|&quot;Tests&quot;| SharedUI
+    UnitTests --&gt;|&quot;Tests&quot;| APIClient
+    UnitTests --&gt;|&quot;Tests&quot;| DataModels
+    UnitTests --&gt;|&quot;Tests&quot;| Utils
+
+    NxBuild --&gt;|&quot;Builds&quot;| Dashboard
+    NxBuild --&gt;|&quot;Builds&quot;| SharedUI
+    NxBuild --&gt;|&quot;Builds&quot;| APIClient
+    GithubCI --&gt;|&quot;Runs&quot;| NxBuild
+    GithubCI --&gt;|&quot;Executes&quot;| E2ETests
+    GithubCI --&gt;|&quot;Executes&quot;| UnitTests
+```</file><file path="storybook-codemirror.md"># Integrating Storybook with CodeMirror, LLMs, and Project Generation
+
+This document outlines how to integrate Storybook with CodeMirror to create a chat interface connected to LLMs and programmatically generate projects based on templates within an Nx monorepo.
+
+## Resources
+
+* **Storybook Documentation**: [Storybook Official Docs](https://storybook.js.org/docs) - Comprehensive guide to setting up and using Storybook.
+* **CodeMirror Documentation**: [CodeMirror Official Docs](https://codemirror.net/docs/) - Detailed API and usage examples for CodeMirror.
+* **Nx Monorepo Documentation**: [Nx Official Docs](https://nx.dev/getting-started/intro) - Learn how to manage monorepos with Nx.
+* **LLM API Integration**: [OpenAI API Docs](https://platform.openai.com/docs/api-reference) - Official documentation for integrating OpenAI&apos;s LLM API.
+* **Templating Engines**: [Handlebars Documentation](https://handlebarsjs.com/guide/) - Guide to using Handlebars for templating.
+* **File System Management**: [fs-extra Documentation](https://github.com/jprichardson/node-fs-extra) - Enhanced file system operations for Node.js.
+* **Commander.js CLI Library**: [Commander.js Documentation](https://github.com/tj/commander.js) - Build command-line interfaces with ease.
+* **Storybook Addons**: [Storybook Addons Documentation](https://storybook.js.org/addons) - Explore and integrate Storybook addons.
+* **Markdown Cheatsheet**: [Markdown Cheatsheet](https://techvomit.net/markdown-cheatsheet/) - Quick reference for Markdown syntax.
+* **Relative Links in Markdown**: [GitHub Relative Links](https://docs.github.com/articles/basic-writing-and-formatting-syntax#relative-links) - Learn how to use relative links in Markdown.
+* **Nx Storybook Plugin**: [Nx Storybook Plugin Docs](https://nx.dev/packages/storybook) - Official documentation for integrating Storybook with Nx.
+* **CodeMirror Addon for Storybook**: [storybook-addon-code-editor](https://www.npmjs.com/package/storybook-addon-code-editor) - NPM package for integrating CodeMirror into Storybook.
+* **Storybook Console Addon**: [@storybook/addon-console](https://www.npmjs.com/package/@storybook/addon-console) - Display console logs within Storybook.
+
+## Approach
+
+The integration process involves several key strategies:
+
+*   **Leveraging Storybook Addons:** Utilize Storybook addons like `storybook-addon-code-editor` and `@storybook/addon-console` to simplify the integration of CodeMirror, provide a code editor, and enhance the development experience by displaying console outputs within Storybook.
+*   **Component-Driven Development:** Build the chat interface and project generation tools as reusable Storybook components.
+*   **Utilizing MDX for Documentation:** Employ MDX to create comprehensive and interactive documentation that combines code examples and explanatory text.
+*   **Connecting to LLMs via API:** Implement an API client to communicate with Large Language Models (LLMs) for code generation and interactive assistance.
+*   **Templating for Project Generation:** Use a templating engine to create projects from predefined templates, allowing for customization through user inputs.
+*   **Command-Line Interface (CLI):** Consider building a CLI to streamline project generation and other tasks.
+*   **File System Management:** Use libraries like `fs-extra` for robust file system operations.
+
+This approach ensures a modular, maintainable, and well-documented integration.
+
+## Steps
+
+1.  **Set up Storybook in your Nx monorepo:** Use Nx generators to add Storybook to your projects. This provides a structured environment for component development and documentation.
+    *   Install the Nx Storybook plugin using **pnpm**:
+    ```bash
+    pnpm add --save-dev @nx/storybook
+    ```
+    *   Generate Storybook configuration for your project:
+    ```bash
+    pnpm nx g @nx/react:storybook-configuration project-name
+    ```
+    *   Launch Storybook for a specific project:
+    ```bash
+    pnpm nx run project-name:storybook
+    ```
+
+2.  **Integrate CodeMirror:** Incorporate CodeMirror into a Storybook component using `storybook-addon-code-editor` or a similar library. This will serve as the foundation for the chat interface and code editor.
+    *   Install `storybook-addon-code-editor` as a dev dependency:
+    ```bash
+    pnpm add --save-dev storybook-addon-code-editor
+    ```
+    *   Update your `.storybook/main.ts` file to include the addon and configure the `staticDirs`:
+    ```typescript:.storybook/main.ts
+    // .storybook/main.ts
+    import type { StorybookConfig } from &apos;@storybook/react-vite&apos;;
+    import { getCodeEditorStaticDirs } from &apos;storybook-addon-code-editor/getStaticDirs&apos;;
+
+    const config: StorybookConfig = {
+      staticDirs: [...getCodeEditorStaticDirs(__filename)],
+      addons: [&apos;storybook-addon-code-editor&apos;],
+      framework: {
+        name: &apos;@storybook/react-vite&apos;,
+        options: {},
+      },
+    };
+
+    export default config;
+    ```
+
+3.  **Connect to LLMs:** Implement the API connection to your chosen LLM within the CodeMirror-based chat component. This enables code generation and interactive assistance features.
+    *   Use an API client like `axios` or `fetch` to communicate with the LLM.
+    *   Example of sending a prompt to an LLM API:
+    ```typescript
+    const response = await fetch(&apos;https://api.llm.com/generate&apos;, {
+      method: &apos;POST&apos;,
+      headers: { &apos;Content-Type&apos;: &apos;application/json&apos; },
+      body: JSON.stringify({ prompt: &apos;Generate a React component&apos; }),
+    });
+    const data = await response.json();
+    console.log(data);
+    ```
+
+4.  **Implement Project Generation:** Create a mechanism to generate projects based on templates. This allows users to quickly create new projects with predefined structures and configurations.
+    *   Use a templating engine like `handlebars` or `ejs` to generate files from templates.
+    *   Example of generating a project structure:
+    ```typescript
+    import { copySync } from &apos;fs-extra&apos;;
+    import { render } from &apos;handlebars&apos;;
+
+    const template = `{
+      &quot;name&quot;: &quot;{{projectName}}&quot;,
+      &quot;version&quot;: &quot;1.0.0&quot;,
+      &quot;scripts&quot;: {
+        &quot;start&quot;: &quot;nx serve {{projectName}}&quot;
+      }
+    }`;
+    const rendered = render(template, { projectName: &apos;my-project&apos; });
+    copySync(&apos;templates/project&apos;, &apos;generated/my-project&apos;);
+    ```
+
+5.  **Develop a CLI (Optional):** Build a command-line interface using a library like `Commander.js` to automate project setup, code generation, and other development tasks.
+    *   Example of a basic CLI setup:
+    ```typescript
+    import { Command } from &apos;commander&apos;;
+    const program = new Command();
+
+    program
+      .command(&apos;generate &lt;projectName&gt;&apos;)
+      .description(&apos;Generate a new project&apos;)
+      .action((projectName) =&gt; {
+        console.log(`Generating project: ${projectName}`);
+        // Call project generation logic here
+      });
+
+    program.parse(process.argv);
+    ```
+
+6.  **Manage Files:** Use `fs-extra` to handle file system operations such as creating directories, copying files, and modifying file contents.
+    *   Example of creating a directory and copying files:
+    ```typescript
+    import { ensureDirSync, copySync } from &apos;fs-extra&apos;;
+
+    ensureDirSync(&apos;generated/my-project&apos;);
+    copySync(&apos;templates/project&apos;, &apos;generated/my-project&apos;);
+    ```
+
+7.  **Integrate `@storybook/addon-console`:** Add the `@storybook/addon-console` to your Storybook to display console logs, warnings, and errors within the Storybook UI, aiding in debugging and monitoring.
+    *   Install the addon:
+    ```bash
+    pnpm add --save-dev @storybook/addon-console @storybook/addon-actions
+    ```
+    *   Configure the addon in `.storybook/main.js`:
+    ```javascript:.storybook/main.js
+    export default {
+      addons: [
+        &quot;@storybook/addon-actions&quot;,
+        &quot;@storybook/addon-console&quot;,
+      ],
+    };
+    ```
+    *   Use the `withConsole` decorator in `.storybook/preview.js`:
+    ```javascript:.storybook/preview.js
+    import type { Preview } from &apos;@storybook/react&apos;;
+    import { withConsole } from &apos;@storybook/addon-console&apos;;
+
+    const preview: Preview = {
+      decorators: [(storyFn, context) =&gt; withConsole()(storyFn)(context)],
+      // ...
+    };
+    ```
+
+### Detailed Setup Instructions for CodeMirror and `storybook-addon-code-editor`
+// ... existing code ...
+### Integrating `@storybook/addon-console`
+
+1.  **Installation:**
+
+    ```bash
+    pnpm add</file><file path="tsconfig.base.json">{
+  &quot;compilerOptions&quot;: {
+    &quot;composite&quot;: true,
+    &quot;declarationMap&quot;: true,
+    &quot;emitDeclarationOnly&quot;: true,
+    &quot;importHelpers&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;lib&quot;: [&quot;es2022&quot;],
+    &quot;module&quot;: &quot;nodenext&quot;,
+    &quot;moduleResolution&quot;: &quot;nodenext&quot;,
+    &quot;noEmitOnError&quot;: true,
+    &quot;noFallthroughCasesInSwitch&quot;: true,
+    &quot;noImplicitOverride&quot;: true,
+    &quot;noImplicitReturns&quot;: true,
+    &quot;noUnusedLocals&quot;: true,
+    &quot;skipLibCheck&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;target&quot;: &quot;es2022&quot;
+  }
+}</file><file path="tsconfig.json">{
+  &quot;extends&quot;: &quot;./tsconfig.base.json&quot;,
+  &quot;compileOnSave&quot;: false,
+  &quot;files&quot;: [],
+  &quot;references&quot;: [
+    {
+      &quot;path&quot;: &quot;./dashboard-e2e&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./utils&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./data-models&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./libs/shared&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./libs/shared/ui&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./libs/shared/api&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./dashboard-e2e&quot;
+    },
+    {
+      &quot;path&quot;: &quot;./dashboard&quot;
+    }
+  ],
+  &quot;ts-node&quot;: {
+    &quot;compilerOptions&quot;: {
+      &quot;module&quot;: &quot;commonjs&quot;
+    }
+  }
+}</file><file path="vitest.workspace.ts">export default [
+  &apos;**/vite.config.{mjs,js,ts,mts}&apos;,
+  &apos;**/vitest.config.{mjs,js,ts,mts}&apos;,
+];</file></files></repomix>

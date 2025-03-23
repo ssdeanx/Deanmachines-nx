@@ -1,10 +1,20 @@
 import styles from './Header.module.css';
 
-export function Header() {
+export interface HeaderProps {
+  title?: string;
+  rightContent?: React.ReactNode;
+  leftContent?: React.ReactNode;
+}
+
+export function Header({ title = 'Dashboard', leftContent, rightContent }: HeaderProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to Header!</h1>
-    </div>
+    <header className={styles.container}>
+      <div className={styles.left}>
+        {leftContent}
+        <h1 className={styles.title}>{title}</h1>
+      </div>
+      {rightContent && <div className={styles.right}>{rightContent}</div>}
+    </header>
   );
 }
 

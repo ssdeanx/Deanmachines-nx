@@ -1,0 +1,262 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.1.1 Chrome/132.0.6834.210 Electron/34.3.3 Safari/537.36" version="26.1.1">
+  <diagram id="codeviz-diagram" name="System Diagram">
+    <mxGraphModel dx="1100" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="subGraph2" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#5D7F99;strokeColor=#D0CEE2;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0;labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="22" y="22" width="544" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="Shared API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph2" vertex="1">
+          <mxGeometry x="128" y="298" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dataModels" value="Data Models" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFCFC;" parent="subGraph2" vertex="1">
+          <mxGeometry x="280" y="362" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="utils" value="Utilities" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph2" vertex="1">
+          <mxGeometry x="40" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="typeDefinitions" value="Type Definitions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph2" vertex="1">
+          <mxGeometry x="210" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="validation" value="Schema Validation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;fontStyle=1" parent="subGraph2" vertex="1">
+          <mxGeometry x="344" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="subGraph2_label" value="Data Flow Layer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=none;spacing=5;fontSize=16;fontStyle=1;fontColor=#1A1A1A;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="30" y="30" width="468" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="subGraph1" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#5D7F99;strokeColor=#D0CEE2;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0;labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="195" y="552" width="520" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="sharedUI" value="Shared UI Library" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph1" vertex="1">
+          <mxGeometry x="40" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="form" value="Form Component" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph1" vertex="1">
+          <mxGeometry x="180" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sharedCard" value="Shared Card" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph1" vertex="1">
+          <mxGeometry x="320" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="subGraph1_label" value="Shared UI Layer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=none;spacing=5;fontStyle=1;fontSize=15;fontColor=#1A1A1A;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="290" y="560" width="444" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="subGraph0" value="" style="html=1;whiteSpace=wrap;container=1;fillColor=#5D7F99;strokeColor=#D0CEE2;dashed=1;fillOpacity=20;strokeWidth=2;containerType=none;recursiveResize=0;movable=1;resizable=1;autosize=0;dropTarget=0;labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="88" y="842" width="800" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard" value="Dashboard App" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph0" vertex="1">
+          <mxGeometry x="80" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="table" value="Table Component" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph0" vertex="1">
+          <mxGeometry x="180" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sidebar" value="Sidebar Component" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph0" vertex="1">
+          <mxGeometry x="40" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="header" value="Header Component" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph0" vertex="1">
+          <mxGeometry x="320" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="card" value="Card Component" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph0" vertex="1">
+          <mxGeometry x="600" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="button" value="Button Component" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;labelBackgroundColor=none;strokeColor=#D0CEE2;fontColor=#FFFFFF;" parent="subGraph0" vertex="1">
+          <mxGeometry x="460" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="subGraph0_label" value="Frontend Layer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=none;spacing=5;fontColor=#1A1A1A;fontSize=15;fontStyle=1;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="96" y="850" width="724" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_api_dataModels_0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="api" target="dataModels" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_api_dataModels_0_label" value="Interface Contract" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_api_dataModels_0" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dataModels_sharedUI_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="dataModels" target="sharedUI" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_dataModels_sharedUI_1_label" value="Normalized Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_dataModels_sharedUI_1" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dataModels_dashboard_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="dataModels" target="dashboard" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="414" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dataModels_dashboard_2_label" value="Validated Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_dataModels_dashboard_2" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_typeDefinitions_api_3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="typeDefinitions" target="api" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="292" y="230" />
+              <mxPoint x="220" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_typeDefinitions_api_3_label" value="Type Contracts" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_typeDefinitions_api_3" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_typeDefinitions_dataModels_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="typeDefinitions" target="dataModels" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="292" y="320" />
+              <mxPoint x="362" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_typeDefinitions_dataModels_4_label" value="Type Definitions" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;fontStyle=1;rounded=0;" parent="edge-L_typeDefinitions_dataModels_4" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint x="26" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_typeDefinitions_sharedUI_5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="295" y="210" as="sourcePoint" />
+            <mxPoint x="270" y="700" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="295" y="455" />
+              <mxPoint x="270" y="455" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_typeDefinitions_sharedUI_5_label" value="Component Props" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_typeDefinitions_sharedUI_5" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint x="-3" y="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_validation_dataModels_6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="validation" target="dataModels" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_validation_dataModels_6_label" value="Schema Rules" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_validation_dataModels_6" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_validation_form_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="validation" target="form" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_validation_form_7_label" value="Input Validation" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_validation_form_7" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint x="-1" y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dashboard_sidebar_8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="dashboard" target="sidebar" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_dashboard_sidebar_8_label" value="State" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_dashboard_sidebar_8" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dashboard_table_9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="dashboard" target="table" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_dashboard_table_9_label" value="Data Props" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_dashboard_table_9" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dashboard_header_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="dashboard" target="header" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_dashboard_header_10_label" value="Header Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_dashboard_header_10" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dashboard_card_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="dashboard" target="card" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_dashboard_card_11_label" value="Card Data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_dashboard_card_11" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_dashboard_button_12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="dashboard" target="button" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_dashboard_button_12_label" value="Button State" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_dashboard_button_12" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_utils_dataModels_13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="utils" target="dataModels" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_utils_dataModels_13_label" value="Transform Functions" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;fontStyle=1;rounded=0;" parent="edge-L_utils_dataModels_13" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_utils_sharedUI_14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="utils" target="sharedUI" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_utils_sharedUI_14_label" value="Helper Methods" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_utils_sharedUI_14" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_utils_dashboard_15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="312" as="sourcePoint" />
+            <mxPoint x="230" y="962" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="110" y="312" />
+              <mxPoint x="110" y="990" />
+              <mxPoint x="230" y="990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_utils_dashboard_15_label" value="State Management" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_utils_dashboard_15" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint x="-22" y="-184" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_sharedUI_dashboard_16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="sharedUI" target="dashboard" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-L_sharedUI_dashboard_16_label" value="Reusable Components" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_sharedUI_dashboard_16" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_form_dashboard_17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="750" as="sourcePoint" />
+            <mxPoint x="250" y="970" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="397" y="910" />
+              <mxPoint x="251" y="910" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_form_dashboard_17_label" value="Form Controls" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_form_dashboard_17" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint x="-58" y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_sharedCard_card_18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;strokeWidth=2;jumpStyle=arc;jumpSize=10;spacing=15;labelBackgroundColor=none;labelBorderColor=none;fontColor=default;" parent="1" source="sharedCard" target="card" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="748" y="722" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-L_sharedCard_card_18_label" value="Card Template" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#1A1A1A;rounded=0;" parent="edge-L_sharedCard_card_18" vertex="1" connectable="0">
+          <mxGeometry x="-0.2" y="10" relative="1" as="geometry">
+            <mxPoint x="-78" y="-92" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

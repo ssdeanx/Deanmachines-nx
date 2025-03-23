@@ -2,18 +2,25 @@ import type { StorybookConfig } from '@storybook/react-vite';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Get the directory name of the current module
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const config = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@chromatic-com/storybook'
+    '@storybook/addon-themes',
+    '@storybook/addon-a11y',
+    '@storybook/addon-console',
+    'storybook-dark-mode',
+    '@storybook/addon-designs',
+    '@storybook/addon-viewport',
+    '@storybook/addon-links',
+    '@storybook/addon-storysource',
+    'storybook-addon-swc',
+    'storybook-css-modules',
+    '@storybook/addon-toolbars'
   ],
-
   framework: {
     name: '@storybook/react-vite',
     options: {
@@ -22,17 +29,16 @@ const config = {
       },
     },
   },
-
+  core: {
+    builder: '@storybook/builder-vite',
+  },
   docs: {
-    // For Storybook 8, autodocs is now a default feature
     defaultName: 'Documentation',
   },
-
   staticDirs: ['../public'],
-
   typescript: {
     reactDocgen: 'react-docgen-typescript'
   }
-} satisfies StorybookConfig;
+};
 
 export default config;

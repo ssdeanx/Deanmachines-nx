@@ -1,14 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
-const meta: Meta<typeof Button> = {
-  component: Button,
+const meta = {
   title: 'Components/Button',
+  component: Button,
   tags: ['autodocs'],
-  argTypes: {
-    onClick: { action: 'clicked' }
+  parameters: {
+    layout: 'centered',
   },
-};
+  argTypes: {
+    backgroundColor: { control: 'color' },
+    primary: { control: 'boolean' },
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+    },
+    onClick: { action: 'clicked' },
+  },
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof Button>;
@@ -22,6 +31,7 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
+    primary: false,
     label: 'Secondary Button',
   },
 };
@@ -37,5 +47,13 @@ export const Small: Story = {
   args: {
     size: 'small',
     label: 'Small Button',
+  },
+};
+
+export const CustomBackground: Story = {
+  args: {
+    backgroundColor: '#ff4785',
+    label: 'Custom Background',
+    primary: true,
   },
 };

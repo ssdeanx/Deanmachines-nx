@@ -1,0 +1,81 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--navbar-bg, #ffffff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-right: 2rem;
+  border-right: 1px solid var(--border-color, #e2e8f0);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.brandName {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--text-primary, #2d3748);
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0 0 0 2rem;
+  list-style: none;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary, #4a5568);
+}
+
+.navItem:hover {
+  background-color: var(--hover-bg, #f7fafc);
+  color: var(--text-primary, #2d3748);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.active {
+  background-color: var(--active-bg, #ebf8ff);
+  color: var(--primary-color, #3182ce);
+}
+
+.active:hover {
+  background-color: var(--active-hover-bg, #bee3f8);
+  color: var(--primary-color, #3182ce);
+}
