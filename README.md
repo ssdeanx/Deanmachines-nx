@@ -88,3 +88,90 @@ And join the Nx community:
 - [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
 - [Our Youtube channel](https://www.youtube.com/@nxdevtools)
 - [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+```mermaid
+graph TB
+    User((External User))
+
+    subgraph "Frontend Container"
+        Dashboard["Dashboard App<br>(React + Vite)"]
+        
+        subgraph "Dashboard Components"
+            Header["Header Component<br>(React)"]
+            Footer["Footer Component<br>(React)"]
+            Sidebar["Sidebar Component<br>(React)"]
+            Table["Table Component<br>(React)"]
+            Button["Button Component<br>(React)"]
+            Card["Card Component<br>(React)"]
+            Input["Input Component<br>(React)"]
+        end
+
+        subgraph "Storybook Environment"
+            StorybookUI["Storybook Interface<br>(Storybook)"]
+        end
+    end
+
+    subgraph "Shared Libraries Container"
+        subgraph "UI Library"
+            SharedUI["Shared UI<br>(React)"]
+            SharedButton["Shared Button<br>(React)"]
+            SharedCard["Shared Card<br>(React)"]
+            SharedForm["Shared Form<br>(React)"]
+        end
+
+        subgraph "API Layer"
+            APIClient["API Client<br>(TypeScript)"]
+        end
+
+        subgraph "Core Libraries"
+            DataModels["Data Models<br>(TypeScript)"]
+            Utils["Utilities<br>(TypeScript)"]
+        end
+    end
+
+    subgraph "Testing Container"
+        E2ETests["E2E Tests<br>(Playwright)"]
+        UnitTests["Unit Tests<br>(Vitest)"]
+    end
+
+    subgraph "Build & CI/CD"
+        NxBuild["Nx Build System<br>(Nx)"]
+        GithubCI["GitHub Actions<br>(CI/CD)"]
+    end
+
+    %% Relationships
+    User -->|"Interacts with"| Dashboard
+    Dashboard -->|"Uses"| Header
+    Dashboard -->|"Uses"| Footer
+    Dashboard -->|"Uses"| Sidebar
+    Dashboard -->|"Uses"| Table
+    Dashboard -->|"Uses"| Button
+    Dashboard -->|"Uses"| Card
+    Dashboard -->|"Uses"| Input
+
+    Dashboard -->|"Uses"| SharedUI
+    Dashboard -->|"Uses"| APIClient
+    Dashboard -->|"Uses"| DataModels
+    Dashboard -->|"Uses"| Utils
+
+    SharedUI -->|"Contains"| SharedButton
+    SharedUI -->|"Contains"| SharedCard
+    SharedUI -->|"Contains"| SharedForm
+
+    StorybookUI -->|"Documents"| SharedUI
+    StorybookUI -->|"Documents"| Button
+    StorybookUI -->|"Documents"| Card
+
+    E2ETests -->|"Tests"| Dashboard
+    UnitTests -->|"Tests"| SharedUI
+    UnitTests -->|"Tests"| APIClient
+    UnitTests -->|"Tests"| DataModels
+    UnitTests -->|"Tests"| Utils
+
+    NxBuild -->|"Builds"| Dashboard
+    NxBuild -->|"Builds"| SharedUI
+    NxBuild -->|"Builds"| APIClient
+    GithubCI -->|"Runs"| NxBuild
+    GithubCI -->|"Executes"| E2ETests
+    GithubCI -->|"Executes"| UnitTests
+```

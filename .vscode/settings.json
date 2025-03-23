@@ -1,3 +1,39 @@
 {
-    "nxConsole.nxWorkspacePath": ""
+    "nxConsole.nxWorkspacePath": "",
+    "dbcode.connections": [
+        {
+            "connectionId": "vyNQgRWHUGXzba2885qjH",
+            "name": "db",
+            "driver": "postgres",
+            "color": "#BD0014",
+            "connectionType": "host",
+            "host": "localhost",
+            "port": 5432,
+            "ssl": false,
+            "username": "postgres",
+            "password": "",
+            "savePassword": "secretStorage",
+            "database": "db",
+            "readOnly": false,
+            "role": "development",
+            "connectionTimeout": 30
+        },
+        {
+            "connectionId": "hWsTmqDSloiOojTi6jiQi",
+            "name": "clustr",
+            "driver": "mongodb",
+            "connectionType": "host",
+            "driverOptions": {
+                "protocol": "mongodb://"
+            },
+            "host": "cluster0.3uthc.mongodb.net",
+            "port": 27017,
+            "ssl": false,
+            "username": "owner",
+            "password": "",
+            "savePassword": "secretStorage",
+            "readOnly": false,
+            "connectionTimeout": 30
+        }
+    ]
 }
